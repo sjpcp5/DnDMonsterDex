@@ -19,12 +19,16 @@ function callTheMonsters() {
         var resultsToDisplay = [];
         console.log(resultsSmall);
 
+        // these will be the if statements that will push our results into resultsToDisplay based upon parameters
         if (
-          resultsSmall.size.includes("Small")
+          resultsSmall.size.includes("Medium") &&
+          resultsSmall.hit_points >= 100 &&
+          resultsSmall.hit_points <= 200 &&
+          resultsSmall.armor_class === 17
         ) {
           resultsToDisplay.push(resultsSmall.name);
         }
-
+        // This loop actually writes the results to the html file
         for (var j = 0; j < resultsToDisplay.length; j++) {
           let newH1 = $("<h3>").text(resultsToDisplay[j]);
           $(".display_data").append(newH1);
