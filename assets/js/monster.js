@@ -1,5 +1,5 @@
 // going to data dump the monsters from the api
-function callTheMonsters() {
+function callTheMonsters(monSize, monHitLow=0, monHitHigh=400, monArmor=0) {
   // ajax call
   $.ajax({
     url: "http://www.dnd5eapi.co/api/monsters",
@@ -16,16 +16,43 @@ function callTheMonsters() {
         method: "GET"
       }).then(function(response2) {
         let resultsSmall = response2;
+        var resultsToDisplay = [];
+        console.log(resultsSmall);
 
-        if (resultsSmall.name.includes("Dragon")) {
-          let pEl = $("<h1>").text(resultsSmall.name);
-          let pEl2 = $("<p>").text(resultsSmall.size);
-          $(".display_data").append(pEl);
-          $(".display_data").append(pEl2);
+        // these will be the if statements that will push our results into resultsToDisplay based upon the arguments
+        if (
+          resultsSmall.size.includes(monSize) &&
+          resultsSmall.hit_points >= monHitLow &&
+          resultsSmall.hit_points <= monHitHigh &&
+          resultsSmall.armor_class > monArmor
+        ) {
+          resultsToDisplay.push(resultsSmall.name);
+        }
+        // This loop actually writes the results to the html file dynamically
+        for (var j = 0; j < resultsToDisplay.length; j++) {
+          let newH3 = $("<h3>").text(resultsToDisplay[j]);
+          newH3.addClass("click_this");
+          $(".display_data").append(newH3);
         }
       });
     }
   });
 }
 
-callTheMonsters();
+callTheMonsters("Large"); // this is working based on coded search parameters (Size Str, hit low int, hit high int, armor)
+
+// need a click event with callback function that will display full stats upon clicking something
+// currently not working
+
+$(".click_this").click(function() {
+  console.log("I am clicked");
+  let monster = this.text.toLowerCase();
+  console.log(monster);
+
+  $.ajax({
+    url: "http://www.dnd5eapi.co/api/monsters/" + monster,
+    method: "GET"
+  }).then(function(response3) {
+    console.log(response3);
+  });
+});
