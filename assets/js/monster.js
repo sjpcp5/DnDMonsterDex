@@ -7,7 +7,7 @@ function callTheMonsters() {
   }).then(function(response) {
     console.log(response);
     let results = response.results;
-
+    // for loop that restricts results after going through the array of data
     for (var i = 0; i < results.length; i++) {
       if (results[i].name.includes("Dragon")) {
         let pEl = $("<p>").text(results[i].name);
