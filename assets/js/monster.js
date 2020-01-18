@@ -9,9 +9,11 @@ function callTheMonsters() {
     let results = response.results;
 
     for (var i = 0; i < results.length; i++) {
-      let pEl = $("<p>").text(results[i].index);
-      console.log(pEl);
-      $(".display_data").append(pEl);
+      if (results[i].name.includes("Dragon")) {
+        let pEl = $("<p>").text(results[i].name);
+        console.log(pEl);
+        $(".display_data").append(pEl);
+      }
     }
   });
 }
