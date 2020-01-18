@@ -16,12 +16,18 @@ function callTheMonsters() {
         method: "GET"
       }).then(function(response2) {
         let resultsSmall = response2;
+        var resultsToDisplay = [];
+        console.log(resultsSmall);
 
-        if (resultsSmall.name.includes("Dragon")) {
-          let pEl = $("<h1>").text(resultsSmall.name);
-          let pEl2 = $("<p>").text(resultsSmall.size);
-          $(".display_data").append(pEl);
-          $(".display_data").append(pEl2);
+        if (
+          resultsSmall.size.includes("Small")
+        ) {
+          resultsToDisplay.push(resultsSmall.name);
+        }
+
+        for (var j = 0; j < resultsToDisplay.length; j++) {
+          let newH1 = $("<h3>").text(resultsToDisplay[j]);
+          $(".display_data").append(newH1);
         }
       });
     }
