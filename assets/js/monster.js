@@ -31,6 +31,7 @@ function callTheMonsters(monSize, monHitLow=0, monHitHigh=400, monArmor=0) {
         // This loop actually writes the results to the html file dynamically
         for (var j = 0; j < resultsToDisplay.length; j++) {
           let newH3 = $("<h3>").text(resultsToDisplay[j]);
+          newH3.attr("data-name", resultsSmall.index);
           newH3.addClass("click_this");
           $(".display_data").append(newH3);
         }
@@ -42,11 +43,11 @@ function callTheMonsters(monSize, monHitLow=0, monHitHigh=400, monArmor=0) {
 callTheMonsters("Large"); // this is working based on coded search parameters (Size Str, hit low int, hit high int, armor)
 
 // need a click event with callback function that will display full stats upon clicking something
-// currently not working
 
-$(".click_this").click(function() {
+
+$(document).on("click", ".click_this", function() {
   console.log("I am clicked");
-  let monster = this.text.toLowerCase();
+  let monster = $(this).data("name");
   console.log(monster);
 
   $.ajax({
@@ -54,5 +55,18 @@ $(".click_this").click(function() {
     method: "GET"
   }).then(function(response3) {
     console.log(response3);
+    $(".display_data").empty();
+
+    let newDiv = $("<div>");
+    let newH1 = $("<h1>").text(response3.name);
+    let sizeEl = $("<h4>").text(response3.size);
+    let armorEl = $("<h4>").text(response3.armor_class);
+
+    newDiv.append(newH1);
+    newDiv.append(sizeEl);
+    newDiv.append(armorEl);
+
+    $(".display_data").append(newDiv);
+
   });
 });
