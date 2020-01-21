@@ -57,14 +57,52 @@ $(document).on("click", ".click_this", function() {
     console.log(response3);
     $(".display_data").empty();
 
+    // creating an array of the actions able to be taken by monster (for later looping)
+
+    let monstActionArray = response3.actions;
+
+
+    // creating all the elements, and populating them with monster info
+
     let newDiv = $("<div>");
-    let newH1 = $("<h1>").text(response3.name);
-    let sizeEl = $("<h4>").text(response3.size);
-    let armorEl = $("<h4>").text(response3.armor_class);
+    let newH1 = $("<h1>").text("Name: " + response3.name);
+    let sizeEl = $("<h4>").text("Size: " + response3.size);
+    let armorEl = $("<h4>").text("Armor Class: " + response3.armor_class);
+    let hitpEl = $("<h4>").text("Hit Points: " + response3.hit_points);
+    let strengthEl = $("<h4>").text("Strength: " + response3.strength);
+    let dexterityEl = $("<h4>").text("Dexterity: " + response3.dexterity);
+    let constitutionEl = $("<h4>").text("Constitution: " + response3.constitution);
+    let intelligenceEl = $("<h4>").text("Intelligence: " + response3.intelligence);
+    let wisdomEl = $("<h4>").text("Wisdom: " + response3.wisdom);
+    let charismaEl = $("<h4>").text("Charisma: " + response3.charisma);
+    let hitdEl = $("<h4>").text("Hit Dice: " + response3.hit_dice);
+    let langEl = $("<h4>").text("Language: " + response3.languages);
+
+
+    // appending all the made elements into one div
 
     newDiv.append(newH1);
     newDiv.append(sizeEl);
     newDiv.append(armorEl);
+    newDiv.append(hitpEl);
+    newDiv.append(strengthEl);
+    newDiv.append(dexterityEl);
+    newDiv.append(constitutionEl);
+    newDiv.append(intelligenceEl);
+    newDiv.append(wisdomEl);
+    newDiv.append(charismaEl);
+    newDiv.append(hitdEl);
+    newDiv.append(langEl);
+
+    for (var k = 0; k < monstActionArray.length; k++) {
+      let actionName = $("<h4>").text(monstActionArray[k].name);
+      let actionDesc = $("<h5>").text(monstActionArray[k].desc);
+
+      newDiv.append(actionName);
+      newDiv.append(actionDesc);
+    }
+
+    // appending that div to our already made div for holding the monster info
 
     $(".display_data").append(newDiv);
 
