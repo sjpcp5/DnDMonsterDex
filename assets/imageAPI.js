@@ -15,7 +15,7 @@
  and chips, num "parameter is number of search items returned.""
 */
 //var DnDseResults = $(".display-data")
-var imgURL = "https://serpapi.com/playground?q="+ "AncientBlackDragons" + "&tbm=isch&ijn=0";
+var imgURL = "https://serpapi.com/playground?q=AncientBlackDragons&tbm=isch&ijn=0";
 
 function imageResults(){
     $.ajax({
