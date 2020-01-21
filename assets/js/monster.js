@@ -1,5 +1,11 @@
 // going to data dump the monsters from the api
-function callTheMonsters(monSize, monHitLow=0, monHitHigh=400, monArmor=0) {
+function callTheMonsters(
+  monSize,
+  monHitLow = 0,
+  monHitHigh = 400,
+  monArmor = 0,
+  monName = "undefined"
+) {
   // ajax call
   $.ajax({
     url: "http://www.dnd5eapi.co/api/monsters",
@@ -30,20 +36,55 @@ function callTheMonsters(monSize, monHitLow=0, monHitHigh=400, monArmor=0) {
         }
         // This loop actually writes the results to the html file dynamically
         for (var j = 0; j < resultsToDisplay.length; j++) {
-          let newH3 = $("<h3>").text(resultsToDisplay[j]);
-          newH3.attr("data-name", resultsSmall.index);
-          newH3.addClass("click_this");
-          $(".display_data").append(newH3);
+          if (monName === "undefined") {
+            let newH3 = $("<h3>").text(resultsToDisplay[j]); //if no name is chosen, it will return all monsters that fit args
+            newH3.attr("data-name", resultsSmall.index);
+            newH3.addClass("click_this");
+            $(".display_data").append(newH3);
+          } else {
+            if (resultsToDisplay[j].includes(monName)) {
+              let newH3 = $("<h3>").text(resultsToDisplay[j]); //if a name is chose, it will only display mons that include name
+              newH3.attr("data-name", resultsSmall.index);
+              newH3.addClass("click_this");
+              $(".display_data").append(newH3);
+            }
+          }
         }
       });
     }
   });
 }
 
-callTheMonsters("Large"); // this is working based on coded search parameters (Size Str, hit low int, hit high int, armor)
+// for testing purposes, an event handler for button click to display search results
+
+$("#display-results").on("click", function() {
+  console.log("i hath been clicked");
+
+  let inputName = $("#name").val();
+  let inputSize = $("#size").val();
+  let inputHitLow = $("#hitlow").val();
+  let inputHitHigh = $("#hithigh").val();
+  let inputArmorMin = $("#armormin").val();
+
+  callTheMonsters(
+    inputSize,
+    inputHitLow,
+    inputHitHigh,
+    inputArmorMin,
+    inputName
+  );
+});
+
+$("#clear-results").on("click", function() {
+  let confirmThis = confirm("Are you sure?");
+  if (confirmThis) {
+    $(".display_data").empty();
+  }
+});
+
+// callTheMonsters("Large", 0, 400, 0, "Dragon"); // this is working based on coded search parameters (Size Str, hit low int, hit high int, armor)
 
 // need a click event with callback function that will display full stats upon clicking something
-
 
 $(document).on("click", ".click_this", function() {
   console.log("I am clicked");
@@ -61,7 +102,6 @@ $(document).on("click", ".click_this", function() {
 
     let monstActionArray = response3.actions;
 
-
     // creating all the elements, and populating them with monster info
 
     let newDiv = $("<div>");
@@ -71,13 +111,16 @@ $(document).on("click", ".click_this", function() {
     let hitpEl = $("<h4>").text("Hit Points: " + response3.hit_points);
     let strengthEl = $("<h4>").text("Strength: " + response3.strength);
     let dexterityEl = $("<h4>").text("Dexterity: " + response3.dexterity);
-    let constitutionEl = $("<h4>").text("Constitution: " + response3.constitution);
-    let intelligenceEl = $("<h4>").text("Intelligence: " + response3.intelligence);
+    let constitutionEl = $("<h4>").text(
+      "Constitution: " + response3.constitution
+    );
+    let intelligenceEl = $("<h4>").text(
+      "Intelligence: " + response3.intelligence
+    );
     let wisdomEl = $("<h4>").text("Wisdom: " + response3.wisdom);
     let charismaEl = $("<h4>").text("Charisma: " + response3.charisma);
     let hitdEl = $("<h4>").text("Hit Dice: " + response3.hit_dice);
     let langEl = $("<h4>").text("Language: " + response3.languages);
-
 
     // appending all the made elements into one div
 
@@ -105,6 +148,5 @@ $(document).on("click", ".click_this", function() {
     // appending that div to our already made div for holding the monster info
 
     $(".display_data").append(newDiv);
-
   });
 });
