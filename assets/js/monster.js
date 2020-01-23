@@ -18,8 +18,8 @@ function callTheMonsters() {
         let resultsSmall = response2;
 
         if (resultsSmall.name.includes("Dragon")) {
-          let pEl = $("<h1>").text(resultsSmall.name);
-          let pEl2 = $("<p>").text(resultsSmall.size);
+          let pEl = $("<h1 1h-copy mv0>").text(resultsSmall.name);
+          let pEl2 = $("<p 1h-copy mv0>").text(resultsSmall.size);
           $(".display_data").append(pEl);
           $(".display_data").append(pEl2);
         }

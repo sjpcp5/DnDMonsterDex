@@ -15,7 +15,7 @@
  and chips, num "parameter is number of search items returned.""
 */
 //var DnDseResults = $(".display-data")
-$("button").on("click", function() {
+$("#monsterClick").on("click", function() {
     
 var monster = $(this).attr("data-monster");
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -25,6 +25,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         url: queryURL,
         method: "GET"
     }).then(function(response) {
+        console.log(queryURL)
         console.log(response);
 
         var results = response.data;
@@ -44,14 +45,14 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
 
         // ============= put step 3 in between these dashes ======================
           var monsterDiv = $("<div>");
-          var rating = results[i].rating;
-          var p = $("<p>").text("Rating: " + rating);
+          //var rating = results[i].rating;
+          //var p = $("<p>").text("Rating: " + rating);
 
-          var monsterImage = $("<img>");
+          var monsterImage = $("<img mw5 db>");
           monsterImage.attr("src", results[i].images.fixed_height.url);
 
-          monsterDiv.append(p);
-          monsterDiv.append(animalImage);
+          //monsterDiv.append(p);
+          monsterDiv.append(monsterImage);
 
           $("#gifs-appear-here").prepend(monsterDiv);
 

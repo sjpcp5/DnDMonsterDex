@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
     <title>imageAPI</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="imageAPI.js" type="text/javascript"></script>
+    
+    
         
 </head>
 <body>
-    <div>
+    >
         <div class="Monster-Search-Form pa4-l">
             <form class="SearchBar bg-light-red mw7 center pa4 br2-ns ba b--black-10">
               <fieldset class="cf bn ma0 pa0">
@@ -24,11 +25,16 @@
               </fieldset>
             </form>
           </div>
-          <div class="display_data">
-            <button data-monster="dragon">Roar</button>
-          <div id="gifs-appear-here">
-        </div>
+          <button id="monsterClick" data-monster="dragon">Roar</button>
+          <div class= "monsterGifs dt mw6 center pv5-m pv6-ns">
+            <div id="gifs-appear-here dtc v-btm"></div>
+          </div>  
+          <div class="display_data dtc v-btm p13">
+                    <!--h1-- class= "h1 1h-copy mv"></!--h1-->
+                    <!--p-- class = "p 1h-copy mv0"></!--p-->  
+          </div>
     </div>
+    <script src="imageAPI.js" type="text/javascript"></script>
     <script src="monster.js" type="text/javascript"></script>
 </body>
 </html>
