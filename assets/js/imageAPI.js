@@ -15,7 +15,10 @@
  and chips, num "parameter is number of search items returned.""
 */
 //var DnDseResults = $(".display-data")
-var imgURL = "https://serpapi.com/playground?q=AncientBlackDragons&tbm=isch&ijn=0";
+
+var animal = $(this).attr("data-animal");
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        animal + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq";
 
 function imageResults(){
     $.ajax({
