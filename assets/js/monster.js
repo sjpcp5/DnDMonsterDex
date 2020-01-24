@@ -65,7 +65,7 @@ $("#display-results").on("click", function() {
   $(".spinner-border").attr("style", "display: block;");
 
   let inputName = $("#name").val();
-  let inputSize = $("#size").val();
+  let inputSize = $("#SizeSelect").html();
   let inputHitLow = $("#hitlow").val();
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
@@ -151,7 +151,7 @@ $(document).on("click", ".click_this", function() {
 
     // appending that div to our already made div for holding the monster info
 
-    $(".display_data").append(newDiv);
+    $("#search-shtuff").append(newDiv);
 
     // functionality for bookmark/save button
 
