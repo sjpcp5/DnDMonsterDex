@@ -15,20 +15,20 @@
  and chips, num "parameter is number of search items returned.""
 */
 //var DnDseResults = $(".display-data")
-var monsterInputEL = document.getElementsByClassName(".monsterInput").value
+//var monsterInputEL = document.getElementsByClassName(".monsterInput")
 $(".SearchButton").on("click", function() {
 
-var monster = $("#monster-search").val();
+var monster = $(".monsterInput").val();
+console.log(monster);
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq";
-console.log(monster)
-
+console.log(monster);
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log(queryURL)
+        console.log(queryURL);
         console.log(response);
 
         var results = response.data;
@@ -51,7 +51,7 @@ console.log(monster)
           //var rating = results[i].rating;
           //var p = $("<p>").text("Rating: " + rating);
 
-          var monsterImage = $("<img mw5 db>");
+          var monsterImage = $("<img>");
           monsterImage.attr("src", results[i].images.fixed_height.url);
 
           //monsterDiv.append(p);
