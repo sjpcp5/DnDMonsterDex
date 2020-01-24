@@ -11,7 +11,6 @@ function callTheMonsters(
     url: "http://www.dnd5eapi.co/api/monsters",
     method: "GET"
   }).then(function(response) {
-
     console.log(response);
     let resultsBig = response.results;
     // for loop that restricts results after going through the array of data
@@ -25,8 +24,6 @@ function callTheMonsters(
         let resultsSmall = response2;
         var resultsToDisplay = [];
         console.log(resultsSmall);
-
-        
 
         // these will be the if statements that will push our results into resultsToDisplay based upon the arguments
         if (
@@ -68,7 +65,7 @@ $("#display-results").on("click", function() {
   $(".spinner-border").attr("style", "display: block;");
 
   let inputName = $("#name").val();
-  let inputSize = $("#size").val();
+  let inputSize = $("#SizeSelect").html();
   let inputHitLow = $("#hitlow").val();
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
@@ -154,6 +151,25 @@ $(document).on("click", ".click_this", function() {
 
     // appending that div to our already made div for holding the monster info
 
-    $(".display_data").append(newDiv);
+    $("#search-shtuff").append(newDiv);
+
+    // functionality for bookmark/save button
+
+    // this first click event is just saving the name of the current monster into array
+
+    $("#save-button").on("click", function() {
+      let savedMonsters = JSON.parse(localStorage.getItem("saved"));
+
+      if (savedMonsters === null) {
+        savedMonsters = ['fill'];
+        savedMonsters.push(response3.name);
+      } else if (savedMonsters != null) {
+        savedMonsters.push(response3.name);
+      }
+
+      localStorage.setItem("saved", JSON.stringify(savedMonsters));
+    });
   });
 });
+
+// ---------------------------------------------------------------------------------------- //
