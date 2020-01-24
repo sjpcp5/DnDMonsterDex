@@ -6,11 +6,12 @@ function callTheMonsters(
   monArmor = 0,
   monName = "undefined"
 ) {
-  // ajax call
+  // ajax call to get entire monster list
   $.ajax({
     url: "http://www.dnd5eapi.co/api/monsters",
     method: "GET"
   }).then(function(response) {
+
     console.log(response);
     let resultsBig = response.results;
     // for loop that restricts results after going through the array of data
@@ -20,10 +21,12 @@ function callTheMonsters(
       $.ajax({
         url: "http://www.dnd5eapi.co/api/monsters/" + resultsBig[i].index,
         method: "GET"
-      }).then(function(response2) {
+      }).done(function(response2) {
         let resultsSmall = response2;
         var resultsToDisplay = [];
         console.log(resultsSmall);
+
+        
 
         // these will be the if statements that will push our results into resultsToDisplay based upon the arguments
         if (
@@ -40,12 +43,14 @@ function callTheMonsters(
             let newH3 = $("<h3>").text(resultsToDisplay[j]); //if no name is chosen, it will return all monsters that fit args
             newH3.attr("data-name", resultsSmall.index);
             newH3.addClass("click_this");
+            $(".spinner-border").attr("style", "display: none;");
             $(".display_data").append(newH3);
           } else {
             if (resultsToDisplay[j].includes(monName)) {
               let newH3 = $("<h3>").text(resultsToDisplay[j]); //if a name is chose, it will only display mons that include name
               newH3.attr("data-name", resultsSmall.index);
               newH3.addClass("click_this");
+              $(".spinner-border").attr("style", "display: none;");
               $(".display_data").append(newH3);
             }
           }
@@ -59,6 +64,8 @@ function callTheMonsters(
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
+
+  $(".spinner-border").attr("style", "display: block;");
 
   let inputName = $("#name").val();
   let inputSize = $("#size").val();
@@ -82,7 +89,7 @@ $("#clear-results").on("click", function() {
   }
 });
 
-// callTheMonsters("Large", 0, 400, 0, "Dragon"); // this is working based on coded search parameters (Size Str, hit low int, hit high int, armor)
+// this is working based on coded search parameters (Size Str, hit low int, hit high int, armor)
 
 // need a click event with callback function that will display full stats upon clicking something
 
@@ -94,7 +101,7 @@ $(document).on("click", ".click_this", function() {
   $.ajax({
     url: "http://www.dnd5eapi.co/api/monsters/" + monster,
     method: "GET"
-  }).then(function(response3) {
+  }).done(function(response3) {
     console.log(response3);
     $(".display_data").empty();
 
