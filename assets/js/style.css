@@ -1,0 +1,22 @@
+#gifs-appear-here {
+    display: table;
+    vertical-align: bottom;
+}
+.display_data {
+    display: table;
+    vertical-align: bottom;
+    padding-left: 1rem;
+}
+h1:hover {
+    line-height: 1.5;
+    color:green;
+    text-decoration:underline overline;
+}
+p {
+    line-height: 1.5;
+}
+img {
+    display: block; 
+    max-width: 16rem;
+    
+}

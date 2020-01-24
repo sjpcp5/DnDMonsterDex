@@ -15,11 +15,14 @@
  and chips, num "parameter is number of search items returned.""
 */
 //var DnDseResults = $(".display-data")
-$("#monsterClick").on("click", function() {
-    
-var monster = $(this).attr("data-monster");
+var monsterInputEL = document.getElementsByClassName(".monsterInput").value
+$(".SearchButton").on("click", function() {
+
+var monster = $("#monster-search").val();
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq";
+console.log(monster)
+
 
     $.ajax({
         url: queryURL,
@@ -62,4 +65,3 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
 
       });
     });
-
