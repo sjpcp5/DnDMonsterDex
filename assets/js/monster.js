@@ -80,7 +80,7 @@ function removeLoad() {
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
-  $("#monstPage").addClass("d-none");
+  $("#monstPage").addClass("dn");
 
   addLoad();
 
@@ -111,7 +111,7 @@ $("#clear-results").on("click", function() {
   let confirmThis = confirm("Are you sure?");
   if (confirmThis) {
     $(".display_data").empty();
-    $("#monstPage").addClass("d-none");
+    $("#monstPage").addClass("dn");
     monstActionArray.length = 0;
   }
 });
@@ -125,7 +125,7 @@ $(document).on("click", ".click_this", function() {
   let monster = $(this).data("name");
   console.log(monster);
 
-  $("#monstPage").removeClass("d-none");
+  $("#monstPage").removeClass("dn");
 
   $.ajax({
     url: "http://www.dnd5eapi.co/api/monsters/" + monster,
