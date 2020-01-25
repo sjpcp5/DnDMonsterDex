@@ -16,6 +16,9 @@
 */
 //var DnDseResults = $(".display-data")
 //var monsterInputEL = document.getElementsByClassName(".monsterInput")
+function ArrayToPassParameters() {[
+  key : "AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:",
+]}
 $(".SearchButton").on("click", function() {
 
 var monster = $(".monsterInput").val();
