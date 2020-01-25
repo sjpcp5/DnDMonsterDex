@@ -1,3 +1,8 @@
+html * { 
+    font-family: 'Aladin', cursive;
+
+}
+
 body{
     background-image: url("../images/scrollbackground.jpg");
     margin-left: 3%;
@@ -108,4 +113,16 @@ article {
 }
 #desc{
     float: left;;
+}
+
+.card{
+    background-color: transparent;
+    border: transparent;
+}
+
+.font{
+    font-size: 130%;
+}
+.stats{
+    font-size: 130%
 }
