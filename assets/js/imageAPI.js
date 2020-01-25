@@ -16,16 +16,19 @@
 */
 //var DnDseResults = $(".display-data")
 //var monsterInputEL = document.getElementsByClassName(".monsterInput")
-function ArrayToPassParameters() {[
-  key : "AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:",
-]}
+
+//split function to use last word of search 
+
+// variable parameter to return 1 image or gif 
+
 $(".SearchButton").on("click", function() {
 
 var monster = $(".monsterInput").val();
 console.log(monster);
-//var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        //monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq";
-var queryURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:&006501763354055401202:easggwesejq=" + monster;
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq";
+
+//var queryURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:&006501763354055401202:easggwesejq=ancientblackdragon";
 
 
     $.ajax({
