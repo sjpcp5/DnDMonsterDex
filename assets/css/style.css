@@ -114,9 +114,10 @@ article {
 
 .info{
     padding-left: 10%;
-    float: left;
+    float: right;
     font-size: 150%;
     margin-left: 12%;
+    margin-right: 15%;
 
 }
 #desc{
