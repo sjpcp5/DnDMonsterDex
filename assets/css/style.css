@@ -44,12 +44,13 @@ body{
 }
 
 .black {
-    color: crimson;
+    color: rgba(182, 8, 8, 0.952);
 }
 
 .gray {
     color: #777;
     float: right;
+    font-size: 300%;
 }
 
 .pa3 {
@@ -104,19 +105,30 @@ article {
 }
 .saveBtn {
     margin-right: 5%;
+    float: top;
     float: right;
+    margin-top: 5%;
+    background-color: rgba(182, 8, 8, 0.952);
+    
 }
 
 .info{
     padding-left: 10%;
-    
+    float: left;
+    font-size: 150%;
+    margin-left: 15%;
+
 }
 #desc{
     float: left;;
 }
-api_monster_javascript
+
+
+/* api_monster_javascript */
 .load-animation {
     padding: 10px;
+}
+
 
 .card{
     background-color: transparent;
@@ -130,3 +142,10 @@ api_monster_javascript
     font-size: 130%
 
 }
+
+#attack{
+    font-size: 200%;
+}
+.debug-grid {
+    background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFElEQVR4AWPAC97/9x0eCsAEPgwAVLshdpENIxcAAAAASUVORK5CYII=) repeat top left;
+  }
