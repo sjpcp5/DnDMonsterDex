@@ -62,11 +62,12 @@ function callTheMonsters(
   });
 }
 
-// function to add loading functionality
+// functions to add and remove the loading functionality
 
 function addLoad() {
   let loadDiv = $("<div>");
   loadDiv.addClass("spinner-border");
+  loadDiv.addClass("load-animation");
 
   $(".display_data").append(loadDiv);
 }

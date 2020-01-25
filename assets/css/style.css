@@ -109,3 +109,6 @@ article {
 #desc{
     float: left;;
 }
+.load-animation {
+    padding: 10px;
+}
