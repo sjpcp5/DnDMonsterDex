@@ -83,8 +83,9 @@ $("#display-results").on("click", function() {
   $("#monstPage").addClass("dn");
 
   addLoad();
-  let monstActionArray = [];
+
   monstActionArray.length = 0;
+
 
   let inputName = $("#name").val();
   let inputSize = $("select").find(':selected').text();

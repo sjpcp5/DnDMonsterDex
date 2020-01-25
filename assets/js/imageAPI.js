@@ -16,20 +16,24 @@
 */
 //var DnDseResults = $(".display-data")
 //var monsterInputEL = document.getElementsByClassName(".monsterInput")
+function ArrayToPassParameters() {[
+  key : "AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:",
+]}
 $(".SearchButton").on("click", function() {
 
 var monster = $(".monsterInput").val();
 console.log(monster);
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq";
-console.log(monster);
+//var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        //monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq";
+var queryURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:&006501763354055401202:easggwesejq=" + monster;
+
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log(queryURL);
-        console.log(response);
+        
+      
 
         var results = response.data;
         // ========================
@@ -57,11 +61,14 @@ console.log(monster);
           //monsterDiv.append(p);
           monsterDiv.append(monsterImage);
 
-          $("#gifs-appear-here").prepend(monsterDiv);
+          $(".gcse-search").prepend(monsterDiv);
 
-          
+          console.log(response);
         // ==================================
          }
 
       });
     });
+console.log(response);
+console.log(queryURL);
+console.log(monster);
