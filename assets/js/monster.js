@@ -66,14 +66,13 @@ function callTheMonsters(
 
 function addLoad() {
   let loadDiv = $("<div>");
-  loadDiv.addClass("spinner-border");
-  loadDiv.addClass("load-animation");
+  loadDiv.addClass("loader");
 
   $(".display_data").append(loadDiv);
 }
 
 function removeLoad() {
-  $(".spinner-border").removeClass("spinner-border");
+  $(".loader").removeClass("loader");
 }
 
 // this click listener will run the function above when they click search
@@ -85,7 +84,6 @@ $("#display-results").on("click", function() {
   addLoad();
 
   monstActionArray.length = 0;
-
 
   let inputName = $("#name").val();
   let inputSize = $("select")
@@ -110,7 +108,6 @@ $("#display-results").on("click", function() {
     inputName
   );
 });
-
 
 // ----------------------------------------------------------------------------------------------------- //
 
@@ -200,6 +197,12 @@ btn.onclick = function() {
 $("#clear-yes").on("click", function() {
   $(".display_data").empty();
   $("#monstPage").addClass("dn");
+
+  $("#name").val("");
+  $("#hitlow").val("");
+  $("#hithigh").val("");
+  $("#armormin").val("");
+
   monstActionArray.length = 0;
   modal.style.display = "none";
 });
