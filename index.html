@@ -18,13 +18,14 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='./assets/select2/dist/js/select2.min.js' type='text/javascript'></script>
-    
+
     <!-- stylesheets -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     <link href='./assets/select2/dist/css/select2.min.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css?family=Aclonica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aladin&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" media="screen">
 
     <title>Monster Ranch</title>
@@ -45,7 +46,7 @@
     <input placeholder="Mon Hit High" id="hithigh"></input>
     <input placeholder="Mon Armor Min" id="armormin"></input>
 
-    <select id='SizeSelect' style='width: 200px;'>
+    <select id='SizeSelect' style='width: 150px; height: 31px' ;>
         <option value='1' id='tiny'>Tiny</option>
         <option value='2' id='small'>Small</option>
         <option value='3' id='med'>Medium</option>
@@ -66,31 +67,35 @@
     <!-- create field that diplays search results -->
 
     <!-- Display selected monster image and stats-->
-    <a class="saveBtn link dim br-pill ph3 pv2 mb2 dib white bg-hot-pink" href="#0">Save Monster</a>
-    <div id="monstPage" class="d-none">
+
+    <a class="saveBtn link dim br-pill ph3 pv2 mb2 dib white bg-mid-gray" href="#0">Save Monster</a>
+    <div id="monstPage" class="">
         <div class="row">
-            <article class="card ba dark-gray col b--black-10 mv4 w-100 w-50-m w-25-l fl w-third pa2 mw5 center">
+            <article class="card center">
                 <img src="http://placekitten.com/g/600/300" class="db w-100 br2 br--top"
                     alt="Photo of a kitten looking menacing.">
                 <div class="pa2 ph3-ns pb3-ns">
                     <div class="dt w-100 mt1">
                         <div class="dtc">
-                            <h1 class="f5 f4-ns mv0" id="mon-name">Cat</h1>
+                            <h1 id="mon-name">Cat</h1>
                         </div>
                         <div class="dtc tr">
                         </div>
                     </div>
-                    <p class="f6 row lh-copy measure mt2 mid-gray">
-                        <div class="flex col">
-                            <ul id="str"> Str = 5 </ul>
-                            <ul id="dex"> Dex = 5 </ul>
-                            <ul id="int"> Int = 5 </ul>
-                        </div>
-                        <div class="flex col">
-                            <ul id="cha"> Cha = 5 </ul>
-                            <ul id="wis"> Wis = 5 </ul>
-                            <ul id="con"> Con = 5 </ul>
-                        </div>
+
+                    <div class='stats'>
+                    <div class="stat1 flex col">
+                        <ul id="str"> Str = 5 </ul>
+                        <ul id="dex"> Dex = 5 </ul>
+                        <ul id="int"> Int = 5 </ul>
+                    </div>
+                    <div class="stat2 flex col">
+                        <ul id="Cha"> Cha = 5 </ul>
+                        <ul id="wis"> Wis = 5 </ul>
+                        <ul id="con"> Con = 5 </ul>
+                    </div>
+                </div>
+
                 </div>
 
                 </p>
@@ -117,6 +122,17 @@
         </div>
         <br>
 
+
+        <div class="row">
+            <h2 id="attack">Attacks:</h2>
+
+
+            <p class="font"><br /> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium labore sed
+                doloremque, atque ullam
+                repellendus eum aperiam obcaecati facilis quia minima, tempore nisi nobis vero eius pariatur architecto
+                eligendi. Dolore!</p>
+        </div>
+
     </div>
     
 
@@ -124,10 +140,10 @@
 </body>
 
 
+<script src="./assets/js/monster.js" type="text/javascript"></script>
 
 
-
-<script>
+<!-- <script>
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
     $(document).ready(function () {
@@ -144,7 +160,7 @@
 
         });
     });
-</script>
+</script> -->
 
 
 </html>
