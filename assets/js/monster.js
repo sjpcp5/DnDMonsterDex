@@ -95,6 +95,8 @@ $(document).on("click", ".click_this", function() {
   let monster = $(this).data("name");
   console.log(monster);
 
+  $("#monstPage").removeClass("d-none");
+
   $.ajax({
     url: "http://www.dnd5eapi.co/api/monsters/" + monster,
     method: "GET"
@@ -106,52 +108,34 @@ $(document).on("click", ".click_this", function() {
 
     let monstActionArray = response3.actions;
 
-    // creating all the elements, and populating them with monster info
 
-    let newDiv = $("<div>");
-    let newH1 = $("<h1>").text("Name: " + response3.name);
-    let sizeEl = $("<h4>").text("Size: " + response3.size);
-    let armorEl = $("<h4>").text("Armor Class: " + response3.armor_class);
-    let hitpEl = $("<h4>").text("Hit Points: " + response3.hit_points);
-    let strengthEl = $("<h4>").text("Strength: " + response3.strength);
-    let dexterityEl = $("<h4>").text("Dexterity: " + response3.dexterity);
-    let constitutionEl = $("<h4>").text(
-      "Constitution: " + response3.constitution
-    );
-    let intelligenceEl = $("<h4>").text(
-      "Intelligence: " + response3.intelligence
-    );
-    let wisdomEl = $("<h4>").text("Wisdom: " + response3.wisdom);
-    let charismaEl = $("<h4>").text("Charisma: " + response3.charisma);
-    let hitdEl = $("<h4>").text("Hit Dice: " + response3.hit_dice);
-    let langEl = $("<h4>").text("Language: " + response3.languages);
+    // setting html elemetents to stats
 
-    // appending all the made elements into one div
+    $("#mon-name").text("Monster Name : " + response3.name);
+    $("#str").text("STR: " + response3.strength);
+    $("#dex").text("DEX: " + response3.dexterity);
+    $("#int").text("INT: " + response3.intelligence);
+    $("#cha").text("CHA: " + response3.charisma);
+    $("#wis").text("WIS: " + response3.wisdom);
+    $("#con").text("CON: " + response3.constitution);
 
-    newDiv.append(newH1);
-    newDiv.append(sizeEl);
-    newDiv.append(armorEl);
-    newDiv.append(hitpEl);
-    newDiv.append(strengthEl);
-    newDiv.append(dexterityEl);
-    newDiv.append(constitutionEl);
-    newDiv.append(intelligenceEl);
-    newDiv.append(wisdomEl);
-    newDiv.append(charismaEl);
-    newDiv.append(hitdEl);
-    newDiv.append(langEl);
+    $("#size").text("Size: " + response3.size);
+    $("#type").text("Type: " + response3.type);
+    $("#ac").text("Armor Class: " + response3.armor_class);
+    $("#align").text("Alignment: " + response3.alignment);
+    $("#hp").text("Hit Points: " + response3.hit_points);
+    $("#dice").text("Hit Dice: " + response3.hit_dice);
+    $("#lang").text("Languages: " + response3.languages);
 
-    for (var k = 0; k < monstActionArray.length; k++) {
-      let actionName = $("<h4>").text(monstActionArray[k].name);
-      let actionDesc = $("<h5>").text(monstActionArray[k].desc);
 
-      newDiv.append(actionName);
-      newDiv.append(actionDesc);
-    }
+    // for (var k = 0; k < monstActionArray.length; k++) {
+    //   let actionName = $("<h4>").text(monstActionArray[k].name);
+    //   let actionDesc = $("<h5>").text(monstActionArray[k].desc);
 
-    // appending that div to our already made div for holding the monster info
+    //   newDiv.append(actionName);
+    //   newDiv.append(actionDesc);
+    // }
 
-    $("#search-shtuff").append(newDiv);
 
     // functionality for bookmark/save button
 
