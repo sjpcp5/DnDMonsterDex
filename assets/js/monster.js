@@ -62,7 +62,7 @@ function callTheMonsters(
   });
 }
 
-// for testing purposes, an event handler for button click to display search results
+// this click listener will run the function above when they click search
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
