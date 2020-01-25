@@ -44,12 +44,13 @@ body{
 }
 
 .black {
-    color: crimson;
+    color: rgba(182, 8, 8, 0.952);
 }
 
 .gray {
     color: #777;
     float: right;
+    font-size: 300%;
 }
 
 .pa3 {
@@ -104,7 +105,11 @@ article {
 }
 .saveBtn {
     margin-right: 5%;
+    float: top;
     float: right;
+    margin-top: 5%;
+    background-color: rgba(182, 8, 8, 0.952);
+    
 }
 
 .info{
@@ -114,9 +119,13 @@ article {
 #desc{
     float: left;;
 }
-api_monster_javascript
+
+
+/* api_monster_javascript */
 .load-animation {
     padding: 10px;
+}
+
 
 .card{
     background-color: transparent;

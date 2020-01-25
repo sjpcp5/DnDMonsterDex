@@ -36,11 +36,12 @@
     <nav class="pa3 pa4-ns">
         <a class="link dim black b f6 f5-ns dib mr3" id="MR" href="index.html" title="Home">Monster Ranch</a>
         <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="index.html" title="Home">Main Page</a>
-        <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="favorites.html" title="favorites">Favorites</a>
+        <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="favorites.html" title="favorites">Saved Monsters</a>
     </nav>
 
     <!-- add banner with dnd theme to diplay along the top -->
-    <!-- create input field to search by monster name -->
+    <a class="saveBtn link dim br-pill ph3 pv2 mb2 dib white bg-mid-gray d-none" href="#0">Save Monster</a>
+    <!-- create input fields to search monsters -->
     <input placeholder="Mon Name" id="name"></input>
     <input placeholder="Mon Hit Low" id="hitlow"></input>
     <input placeholder="Mon Hit High" id="hithigh"></input>
@@ -62,12 +63,16 @@
     
     </div>
 
-    <!-- create field that diplays search results -->
+    <!-- Start of Monster Page -->
+
 
     <!-- Display selected monster image and stats-->
 
     <a class="saveBtn link dim br-pill ph3 pv2 mb2 dib white bg-mid-gray" href="#0">Save Monster</a>
-    <div id="monstPage" class="">
+
+
+    <div id="monstPage" class="dn">
+      
         <div class="row">
             <article class="card center">
                 <img src="http://placekitten.com/g/600/300" class="db w-100 br2 br--top"
@@ -88,7 +93,9 @@
                         <ul id="int"> Int = 5 </ul>
                     </div>
                     <div class="stat2 flex col">
-                        <ul id="Cha"> Cha = 5 </ul>
+
+                        <ul id="cha"> Cha = 5 </ul>
+
                         <ul id="wis"> Wis = 5 </ul>
                         <ul id="con"> Con = 5 </ul>
                     </div>
@@ -108,14 +115,8 @@
                 <h3 id="dice">Hit Dice</h3>
                 <h3 id="lang">Languages: </h3>
                 <div id="actions">
-
-                </div>
-            </section>
-            <br>
-            <section class="aux col">
-                <h3>Saving throws:</h3>
-                <h3>Immunities:</h3>
-                <h3>Subtype:</h3>
+                <h3 id="throws">Saving throws:</h3>
+                <h3 id="immun">Immunities:</h3>
             </section>
         </div>
         <br>
@@ -124,41 +125,28 @@
         <div class="row">
             <h2 id="attack">Attacks:</h2>
 
+            <p class="font"><br /></p>
 
-            <p class="font"><br /> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium labore sed
-                doloremque, atque ullam
-                repellendus eum aperiam obcaecati facilis quia minima, tempore nisi nobis vero eius pariatur architecto
-                eligendi. Dolore!</p>
         </div>
 
     </div>
-    
+    <!-- End of Monster Page -->
 
-    <script src="./assets/js/monster.js" type="text/javascript"></script>
+
+    </div>
+
+<script src="./assets/js/monster.js" type="text/javascript"></script>
+
+</div>
+
+
+
 </body>
 
 
 <script src="./assets/js/monster.js" type="text/javascript"></script>
 
 
-<!-- <script>
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
-    $(document).ready(function () {
-
-        // Initialize select2
-        $("#selUser").select2();
-
-        // Read selected option
-        $('#but_read').click(function () {
-            var username = $('#selUser option:selected').text();
-            var userid = $('#selUser').val();
-
-            $('#result').html("id : " + userid + ", name : " + username);
-
-        });
-    });
-</script> -->
 
 
 </html>
