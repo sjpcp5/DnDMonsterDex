@@ -80,14 +80,16 @@ function removeLoad() {
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
-  $("#monstPage").addClass("d-none");
+  $("#monstPage").addClass("dn");
 
   addLoad();
   let monstActionArray = [];
   monstActionArray.length = 0;
 
   let inputName = $("#name").val();
-  let inputSize = $("select").find(':selected').text();
+  let inputSize = $("select")
+    .find(":selected")
+    .text();
   let inputHitLow = $("#hitlow").val();
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
@@ -97,6 +99,8 @@ $("#display-results").on("click", function() {
   // form constrol.. we need to control or modify user input to work in our function every time
   inputName = inputName.charAt(0).toUpperCase() + inputName.slice(1);
 
+  // ---------------------------------------- //
+
   callTheMonsters(
     inputSize,
     inputHitLow,
@@ -104,15 +108,6 @@ $("#display-results").on("click", function() {
     inputArmorMin,
     inputName
   );
-});
-
-$("#clear-results").on("click", function() {
-  let confirmThis = confirm("Are you sure?");
-  if (confirmThis) {
-    $(".display_data").empty();
-    $("#monstPage").addClass("d-none");
-    monstActionArray.length = 0;
-  }
 });
 
 // ----------------------------------------------------------------------------------------------------- //
@@ -124,7 +119,7 @@ $(document).on("click", ".click_this", function() {
   let monster = $(this).data("name");
   console.log(monster);
 
-  $("#monstPage").removeClass("d-none");
+  $("#monstPage").removeClass("dn");
 
   $.ajax({
     url: "http://www.dnd5eapi.co/api/monsters/" + monster,
@@ -154,7 +149,8 @@ $(document).on("click", ".click_this", function() {
     $("#hp").text("Hit Points: " + response3.hit_points);
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
-    $("#attack").html("")
+
+    $("#attack").html("");
 
     for (var k = 0; k < monstActionArray.length; k++) {
       let actionName = $("<h4>").text(monstActionArray[k].name);
@@ -183,3 +179,41 @@ $(document).on("click", ".click_this", function() {
 });
 
 // ---------------------------------------------------------------------------------------- //
+
+// Code for Modal
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+};
+
+$("#clear-yes").on("click", function() {
+  $(".display_data").empty();
+  $("#monstPage").addClass("dn");
+  monstActionArray.length = 0;
+  modal.style.display = "none";
+});
+
+$("#clear-no").on("click", function() {
+  modal.style.display = "none";
+});
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};

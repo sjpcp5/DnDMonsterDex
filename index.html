@@ -57,7 +57,9 @@
     </select>
 
     <button id="display-results">Search</button>
-    <button id="clear-results">Clear</button>
+     <!-- Trigger/Open The Modal -->
+     <button id="myBtn">Clear</button>
+    
 
     <div class="display_data">
     
@@ -65,10 +67,24 @@
 
     <!-- Start of Monster Page -->
 
+    <!--Modal Code------------------>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Are you positive you want to clear the page?</p>
+                <button id="clear-yes">Yes, Clear It!</button>
+                <button id="clear-no">No, Do Not Clear It!</button>
+            </div>
+
+        </div>
+    <!--------------------------->
+
 
     <!-- Display selected monster image and stats-->
-
-    <a class="saveBtn link dim br-pill ph3 pv2 mb2 dib white bg-mid-gray" href="#0">Save Monster</a>
 
     <div id="monstPage" class="d-none">
         <div class="row">
