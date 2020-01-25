@@ -1,4 +1,9 @@
-// going to data dump the monsters from the api
+// creating an array that needs global scope
+
+let monstActionArray = [];
+
+// this is the function that will retreive monster list based upon search parameters
+
 function callTheMonsters(
   monSize,
   monHitLow = 0,
@@ -84,6 +89,7 @@ $("#clear-results").on("click", function() {
   if (confirmThis) {
     $(".display_data").empty();
     $("#monstPage").addClass("d-none");
+    monstActionArray = [];
   }
 });
 
@@ -107,7 +113,7 @@ $(document).on("click", ".click_this", function() {
 
     // creating an array of the actions able to be taken by monster (for later looping)
 
-    let monstActionArray = response3.actions;
+    monstActionArray = response3.actions;
 
     // setting html elemetents to stats
 
