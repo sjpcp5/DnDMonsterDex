@@ -20,26 +20,35 @@
 //split function to use last word of search 
 
 // variable parameter to return 1 image or gif 
-var searchResults = 1;
+
+
 // function to randomize offset
-var offsetArray = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"];
-function getRandomOffset(offsetArray) {
-var randIndex = Math.floor(Math.random()* offsetArray.length);
-var randOffset = offsetArray[randIndex];
+// var offsetArray = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"];
+// function getRandomOffset(offsetArray) {
+// var randIndex = Math.floor(Math.random()* offsetArray.length);
+// var randOffset = offsetArray[randIndex];
 
-return randOffset;
-};
-
-console.log(getRandomOffset);
-
+// return randOffset;
+// };
+var counter = 0
 $(".SearchButton").on("click", function() {
+
+// variable parameter to return 1 image or gif 
+var Limitsearch = '1';
+// array to randomize offset
+var offsetArray = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"];
+var randomNumber= Math.floor(Math.random() * 24);
+var searchNumber= offsetArray[randomNumber];
+console.log(searchNumber);
+
 
 var monster = $(".monsterInput").val();
 console.log(monster);
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq";
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&limit=" + Limitsearch + "&offset=" + searchNumber + "&rating=R&lang=en";
 
-//var queryURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:&006501763354055401202:easggwesejq=ancientblackdragon";
+// https://api.giphy.com/v1/gifs/search?api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&q=
+// dragon&limit=1&offset=0&rating=R&lang=en
+// var queryURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:&006501763354055401202:easggwesejq=ancientblackdragon";
 
 
     $.ajax({
@@ -52,7 +61,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         var results = response.data;
         // ========================
 
-         for (var i = 0; i < results.length; i++) {
+         for (var i = 0; i <= results.length; i++) {
 
         // Step 3: uncomment the for loop above and the closing curly bracket below.
         // Make a div with jQuery and store it in a variable named animalDiv.
@@ -74,15 +83,21 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
 
           //monsterDiv.append(p);
           monsterDiv.append(monsterImage);
-
-          $(".gcse-search").prepend(monsterDiv);
-
+          
+          $(".gcse-search").append(monsterDiv);
+          counter++;
+          console.log("clicked.."+ counter);
+          $(".gsce-search").remove();
+              
+              
+          };
           console.log(response);
         // ==================================
-         }
+         });
+        });
 
-      });
-    });
-console.log(response);
-console.log(queryURL);
-console.log(monster);
+
+
+
+    
+  
