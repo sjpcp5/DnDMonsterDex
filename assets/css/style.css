@@ -114,7 +114,10 @@ article {
 
 .info{
     padding-left: 10%;
-    
+    float: left;
+    font-size: 150%;
+    margin-left: 15%;
+
 }
 #desc{
     float: left;;
@@ -137,3 +140,10 @@ article {
     font-size: 130%
 
 }
+
+#attack{
+    font-size: 200%;
+}
+.debug-grid {
+    background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFElEQVR4AWPAC97/9x0eCsAEPgwAVLshdpENIxcAAAAASUVORK5CYII=) repeat top left;
+  }
