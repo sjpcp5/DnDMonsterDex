@@ -84,11 +84,18 @@ $("#display-results").on("click", function() {
 
   addLoad();
 
+  monstActionArray = [];
+
   let inputName = $("#name").val();
-  let inputSize = "Large"; //$("#SizeSelect").html();
+  let inputSize = $("select").find(':selected').text();
   let inputHitLow = $("#hitlow").val();
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
+
+  console.log(inputSize);
+
+  // form constrol.. we need to control or modify user input to work in our function every time
+  inputName = inputName.charAt(0).toUpperCase() + inputName.slice(1);
 
   callTheMonsters(
     inputSize,
