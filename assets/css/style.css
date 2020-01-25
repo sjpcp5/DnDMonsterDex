@@ -48,7 +48,7 @@ body{
 }
 
 .gray {
-    color: #777;
+    color:darkslategray;
     float: right;
     font-size: 300%;
 }
@@ -116,7 +116,7 @@ article {
     padding-left: 10%;
     float: left;
     font-size: 150%;
-    margin-left: 15%;
+    margin-left: 12%;
 
 }
 #desc{
@@ -141,6 +141,10 @@ article {
 .stats{
     font-size: 130%
 
+}
+
+.display_data{
+    font-size: 150%;
 }
 
 
