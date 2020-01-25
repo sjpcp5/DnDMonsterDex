@@ -94,13 +94,17 @@ $("#display-results").on("click", function() {
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
 
-  if (inputHitLow === "undefined") {
+  console.log("LOOK HERE BRO" + inputHitLow);
+  console.log(inputHitHigh);
+  console.log(inputArmorMin);
+
+  if (inputHitLow === "") {
     inputHitLow = 0;
   }
-  if (inputHitHigh === "undefined") {
+  if (inputHitHigh === "") {
     inputHitHigh = 400;
   }
-  if (inputArmorMin === "undefined") {
+  if (inputArmorMin === "") {
     inputArmorMin = 0;
   }
 
