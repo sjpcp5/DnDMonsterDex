@@ -67,6 +67,7 @@
     <!-- create field that diplays search results -->
 
     <!-- Display selected monster image and stats-->
+
     <a class="saveBtn link dim br-pill ph3 pv2 mb2 dib white bg-mid-gray" href="#0">Save Monster</a>
     <div id="monstPage" class="">
         <div class="row">
@@ -76,11 +77,12 @@
                 <div class="pa2 ph3-ns pb3-ns">
                     <div class="dt w-100 mt1">
                         <div class="dtc">
-                            <h1>Cat</h1>
+                            <h1 id="mon-name">Cat</h1>
                         </div>
                         <div class="dtc tr">
                         </div>
                     </div>
+
                     <div class='stats'>
                     <div class="stat1 flex col">
                         <ul id="str"> Str = 5 </ul>
@@ -93,20 +95,23 @@
                         <ul id="con"> Con = 5 </ul>
                     </div>
                 </div>
+
                 </div>
 
                 </p>
             </article>
             <!-- display monster info -->
             <section class="info col fl pa2">
-                <h1 id="size">Size: Tiny</h1>
-                <h1 id="attr">Attribute: </h1>
-                <h1 id="type">Type: </h1>
-                <h1 id="ac">Armor Class:</h1>
-                <h1 id="align">Alignment: </h1>
-                <h1 id="hp">Hit Points:</h1>
-                <h1 id="dice">Hit Dice</h1>
-                <h1 id="lang">Languages: </h1>
+                <h3 id="size">Size: Tiny</h3>
+                <h3 id="type">Type: </h3>
+                <h3 id="ac">Armor Class:</h3>
+                <h3 id="align">Alignment: </h3>
+                <h3 id="hp">Hit Points:</h3>
+                <h3 id="dice">Hit Dice</h3>
+                <h3 id="lang">Languages: </h3>
+                <div id="actions">
+
+                </div>
             </section>
             <br>
             <section class="aux col">
@@ -117,6 +122,7 @@
         </div>
         <br>
 
+
         <div class="row">
             <h2 id="attack">Attacks:</h2>
 
@@ -126,8 +132,9 @@
                 repellendus eum aperiam obcaecati facilis quia minima, tempore nisi nobis vero eius pariatur architecto
                 eligendi. Dolore!</p>
         </div>
+
     </div>
-    <div id="search-shtuff"></div>
+    
 
     <script src="./assets/js/monster.js" type="text/javascript"></script>
 </body>

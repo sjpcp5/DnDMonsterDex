@@ -1,4 +1,9 @@
-// going to data dump the monsters from the api
+// creating an array that needs global scope
+
+let monstActionArray = [];
+
+// this is the function that will retreive monster list based upon search parameters
+
 function callTheMonsters(
   monSize,
   monHitLow = 0,
@@ -61,11 +66,11 @@ function callTheMonsters(
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
-
+  $("#monstPage").addClass("d-none");
   $(".spinner-border").attr("style", "display: block;");
 
   let inputName = $("#name").val();
-  let inputSize = $("#SizeSelect").html();
+  let inputSize = "Large"; //$("#SizeSelect").html();
   let inputHitLow = $("#hitlow").val();
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
@@ -83,10 +88,12 @@ $("#clear-results").on("click", function() {
   let confirmThis = confirm("Are you sure?");
   if (confirmThis) {
     $(".display_data").empty();
+    $("#monstPage").addClass("d-none");
+    monstActionArray = [];
   }
 });
 
-// this is working based on coded search parameters (Size Str, hit low int, hit high int, armor)
+// ----------------------------------------------------------------------------------------------------- //
 
 // need a click event with callback function that will display full stats upon clicking something
 
@@ -94,6 +101,8 @@ $(document).on("click", ".click_this", function() {
   console.log("I am clicked");
   let monster = $(this).data("name");
   console.log(monster);
+
+  $("#monstPage").removeClass("d-none");
 
   $.ajax({
     url: "http://www.dnd5eapi.co/api/monsters/" + monster,
@@ -104,64 +113,43 @@ $(document).on("click", ".click_this", function() {
 
     // creating an array of the actions able to be taken by monster (for later looping)
 
-    let monstActionArray = response3.actions;
+    monstActionArray = response3.actions;
 
-    // creating all the elements, and populating them with monster info
+    // setting html elemetents to stats
 
-    let newDiv = $("<div>");
-    let newH1 = $("<h1>").text("Name: " + response3.name);
-    let sizeEl = $("<h4>").text("Size: " + response3.size);
-    let armorEl = $("<h4>").text("Armor Class: " + response3.armor_class);
-    let hitpEl = $("<h4>").text("Hit Points: " + response3.hit_points);
-    let strengthEl = $("<h4>").text("Strength: " + response3.strength);
-    let dexterityEl = $("<h4>").text("Dexterity: " + response3.dexterity);
-    let constitutionEl = $("<h4>").text(
-      "Constitution: " + response3.constitution
-    );
-    let intelligenceEl = $("<h4>").text(
-      "Intelligence: " + response3.intelligence
-    );
-    let wisdomEl = $("<h4>").text("Wisdom: " + response3.wisdom);
-    let charismaEl = $("<h4>").text("Charisma: " + response3.charisma);
-    let hitdEl = $("<h4>").text("Hit Dice: " + response3.hit_dice);
-    let langEl = $("<h4>").text("Language: " + response3.languages);
+    $("#mon-name").text("Monster Name : " + response3.name);
+    $("#str").text("STR: " + response3.strength);
+    $("#dex").text("DEX: " + response3.dexterity);
+    $("#int").text("INT: " + response3.intelligence);
+    $("#cha").text("CHA: " + response3.charisma);
+    $("#wis").text("WIS: " + response3.wisdom);
+    $("#con").text("CON: " + response3.constitution);
 
-    // appending all the made elements into one div
-
-    newDiv.append(newH1);
-    newDiv.append(sizeEl);
-    newDiv.append(armorEl);
-    newDiv.append(hitpEl);
-    newDiv.append(strengthEl);
-    newDiv.append(dexterityEl);
-    newDiv.append(constitutionEl);
-    newDiv.append(intelligenceEl);
-    newDiv.append(wisdomEl);
-    newDiv.append(charismaEl);
-    newDiv.append(hitdEl);
-    newDiv.append(langEl);
+    $("#size").text("Size: " + response3.size);
+    $("#type").text("Type: " + response3.type);
+    $("#ac").text("Armor Class: " + response3.armor_class);
+    $("#align").text("Alignment: " + response3.alignment);
+    $("#hp").text("Hit Points: " + response3.hit_points);
+    $("#dice").text("Hit Dice: " + response3.hit_dice);
+    $("#lang").text("Languages: " + response3.languages);
 
     for (var k = 0; k < monstActionArray.length; k++) {
       let actionName = $("<h4>").text(monstActionArray[k].name);
       let actionDesc = $("<h5>").text(monstActionArray[k].desc);
 
-      newDiv.append(actionName);
-      newDiv.append(actionDesc);
+      $("#actions").append(actionName);
+      $("#actions").append(actionDesc);
     }
-
-    // appending that div to our already made div for holding the monster info
-
-    $("#search-shtuff").append(newDiv);
 
     // functionality for bookmark/save button
 
-    // this first click event is just saving the name of the current monster into array
+    // this first click event is just saving the name of the current monster into array !! This functionality not working !!
 
     $("#save-button").on("click", function() {
       let savedMonsters = JSON.parse(localStorage.getItem("saved"));
 
       if (savedMonsters === null) {
-        savedMonsters = ['fill'];
+        savedMonsters = ["fill"];
         savedMonsters.push(response3.name);
       } else if (savedMonsters != null) {
         savedMonsters.push(response3.name);
