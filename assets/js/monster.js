@@ -81,6 +81,7 @@ $("#display-results").on("click", function() {
   console.log("i hath been clicked");
   $("#monstPage").addClass("dn");
 
+  $(".display_data").empty();
   addLoad();
 
   monstActionArray.length = 0;
