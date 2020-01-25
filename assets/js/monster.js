@@ -94,7 +94,19 @@ $("#display-results").on("click", function() {
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
 
-  console.log(inputSize);
+  console.log("LOOK HERE BRO" + inputHitLow);
+  console.log(inputHitHigh);
+  console.log(inputArmorMin);
+
+  if (inputHitLow === "") {
+    inputHitLow = 0;
+  }
+  if (inputHitHigh === "") {
+    inputHitHigh = 400;
+  }
+  if (inputArmorMin === "") {
+    inputArmorMin = 0;
+  }
 
   // form constrol.. we need to control or modify user input to work in our function every time
   inputName = inputName.charAt(0).toUpperCase() + inputName.slice(1);
