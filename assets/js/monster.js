@@ -66,14 +66,13 @@ function callTheMonsters(
 
 function addLoad() {
   let loadDiv = $("<div>");
-  loadDiv.addClass("spinner-border");
-  loadDiv.addClass("load-animation");
+  loadDiv.addClass("loader");
 
   $(".display_data").append(loadDiv);
 }
 
 function removeLoad() {
-  $(".spinner-border").removeClass("spinner-border");
+  $(".loader").removeClass("loader");
 }
 
 // this click listener will run the function above when they click search
@@ -82,10 +81,10 @@ $("#display-results").on("click", function() {
   console.log("i hath been clicked");
   $("#monstPage").addClass("dn");
 
+  $(".display_data").empty();
   addLoad();
 
   monstActionArray.length = 0;
-
 
   let inputName = $("#name").val();
   let inputSize = $("select")
@@ -95,7 +94,19 @@ $("#display-results").on("click", function() {
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
 
-  console.log(inputSize);
+  console.log("LOOK HERE BRO" + inputHitLow);
+  console.log(inputHitHigh);
+  console.log(inputArmorMin);
+
+  if (inputHitLow === "") {
+    inputHitLow = 0;
+  }
+  if (inputHitHigh === "") {
+    inputHitHigh = 400;
+  }
+  if (inputArmorMin === "") {
+    inputArmorMin = 0;
+  }
 
   // form constrol.. we need to control or modify user input to work in our function every time
   inputName = inputName.charAt(0).toUpperCase() + inputName.slice(1);
@@ -110,7 +121,6 @@ $("#display-results").on("click", function() {
     inputName
   );
 });
-
 
 // ----------------------------------------------------------------------------------------------------- //
 
@@ -200,6 +210,12 @@ btn.onclick = function() {
 $("#clear-yes").on("click", function() {
   $(".display_data").empty();
   $("#monstPage").addClass("dn");
+
+  $("#name").val("");
+  $("#hitlow").val("");
+  $("#hithigh").val("");
+  $("#armormin").val("");
+
   monstActionArray.length = 0;
   modal.style.display = "none";
 });
