@@ -79,6 +79,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=7
           //var p = $("<p>").text("Rating: " + rating);
 
           var monsterImage = $("<img>");
+          //check images in response data!!!!!!!!
           monsterImage.attr("src", results[i].images.fixed_height.url);
 
           //monsterDiv.append(p);
