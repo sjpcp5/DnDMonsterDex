@@ -61,11 +61,11 @@ function callTheMonsters(
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
-
+  $("#monstPage").addClass("d-none");
   $(".spinner-border").attr("style", "display: block;");
 
   let inputName = $("#name").val();
-  let inputSize = "Large" //$("#SizeSelect").html();
+  let inputSize = "Large"; //$("#SizeSelect").html();
   let inputHitLow = $("#hitlow").val();
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
@@ -83,10 +83,11 @@ $("#clear-results").on("click", function() {
   let confirmThis = confirm("Are you sure?");
   if (confirmThis) {
     $(".display_data").empty();
+    $("#monstPage").addClass("d-none");
   }
 });
 
-// this is working based on coded search parameters (Size Str, hit low int, hit high int, armor)
+// ----------------------------------------------------------------------------------------------------- //
 
 // need a click event with callback function that will display full stats upon clicking something
 
@@ -108,7 +109,6 @@ $(document).on("click", ".click_this", function() {
 
     let monstActionArray = response3.actions;
 
-
     // setting html elemetents to stats
 
     $("#mon-name").text("Monster Name : " + response3.name);
@@ -127,25 +127,23 @@ $(document).on("click", ".click_this", function() {
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
 
+    for (var k = 0; k < monstActionArray.length; k++) {
+      let actionName = $("<h4>").text(monstActionArray[k].name);
+      let actionDesc = $("<h5>").text(monstActionArray[k].desc);
 
-    // for (var k = 0; k < monstActionArray.length; k++) {
-    //   let actionName = $("<h4>").text(monstActionArray[k].name);
-    //   let actionDesc = $("<h5>").text(monstActionArray[k].desc);
-
-    //   newDiv.append(actionName);
-    //   newDiv.append(actionDesc);
-    // }
-
+      $("#actions").append(actionName);
+      $("#actions").append(actionDesc);
+    }
 
     // functionality for bookmark/save button
 
-    // this first click event is just saving the name of the current monster into array
+    // this first click event is just saving the name of the current monster into array !! This functionality not working !!
 
     $("#save-button").on("click", function() {
       let savedMonsters = JSON.parse(localStorage.getItem("saved"));
 
       if (savedMonsters === null) {
-        savedMonsters = ['fill'];
+        savedMonsters = ["fill"];
         savedMonsters.push(response3.name);
       } else if (savedMonsters != null) {
         savedMonsters.push(response3.name);
