@@ -83,8 +83,8 @@ $("#display-results").on("click", function() {
   $("#monstPage").addClass("d-none");
 
   addLoad();
-
-  monstActionArray = [];
+  let monstActionArray = [];
+  monstActionArray.length = 0;
 
   let inputName = $("#name").val();
   let inputSize = $("select").find(':selected').text();
@@ -111,7 +111,7 @@ $("#clear-results").on("click", function() {
   if (confirmThis) {
     $(".display_data").empty();
     $("#monstPage").addClass("d-none");
-    monstActionArray = [];
+    monstActionArray.length = 0;
   }
 });
 
@@ -154,13 +154,13 @@ $(document).on("click", ".click_this", function() {
     $("#hp").text("Hit Points: " + response3.hit_points);
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
+    $("#attack").html("")
 
     for (var k = 0; k < monstActionArray.length; k++) {
       let actionName = $("<h4>").text(monstActionArray[k].name);
       let actionDesc = $("<h5>").text(monstActionArray[k].desc);
-
-      $("#actions").append(actionName);
-      $("#actions").append(actionDesc);
+      $("#attack").append(actionName);
+      $("#attack").append(actionDesc);
     }
 
     // functionality for bookmark/save button
