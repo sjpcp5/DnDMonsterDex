@@ -194,8 +194,8 @@ article {
   }
 
   .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid color rgba(182, 8, 8, 0.952);
+    border: 16px solid darkkhaki;  
+    border-top: 16px solid rgba(182, 8, 8, 0.952);
     border-radius: 50%;
     width: 120px;
     height: 120px;
