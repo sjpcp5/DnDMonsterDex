@@ -159,8 +159,8 @@ $(document).on("click", ".click_this", function() {
       let actionName = $("<h4>").text(monstActionArray[k].name);
       let actionDesc = $("<h5>").text(monstActionArray[k].desc);
 
-      $("#actions").append(actionName);
-      $("#actions").append(actionDesc);
+      $("#attack").append(actionName);
+      $("#attack").append(actionDesc);
     }
 
     // functionality for bookmark/save button
