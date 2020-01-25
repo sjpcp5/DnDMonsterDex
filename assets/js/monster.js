@@ -110,6 +110,7 @@ $("#display-results").on("click", function() {
   );
 });
 
+
 // ----------------------------------------------------------------------------------------------------- //
 
 // need a click event with callback function that will display full stats upon clicking something
