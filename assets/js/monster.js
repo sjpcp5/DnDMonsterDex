@@ -45,14 +45,14 @@ function callTheMonsters(
             let newH3 = $("<h3>").text(resultsToDisplay[j]); //if no name is chosen, it will return all monsters that fit args
             newH3.attr("data-name", resultsSmall.index);
             newH3.addClass("click_this");
-            $(".spinner-border").attr("style", "display: none;");
+            removeLoad();
             $(".display_data").append(newH3);
           } else {
             if (resultsToDisplay[j].includes(monName)) {
               let newH3 = $("<h3>").text(resultsToDisplay[j]); //if a name is chose, it will only display mons that include name
               newH3.attr("data-name", resultsSmall.index);
               newH3.addClass("click_this");
-              $(".spinner-border").attr("style", "display: none;");
+              removeLoad();
               $(".display_data").append(newH3);
             }
           }
@@ -62,18 +62,40 @@ function callTheMonsters(
   });
 }
 
-// for testing purposes, an event handler for button click to display search results
+// functions to add and remove the loading functionality
+
+function addLoad() {
+  let loadDiv = $("<div>");
+  loadDiv.addClass("spinner-border");
+  loadDiv.addClass("load-animation");
+
+  $(".display_data").append(loadDiv);
+}
+
+function removeLoad() {
+  $(".spinner-border").removeClass("spinner-border");
+}
+
+// this click listener will run the function above when they click search
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
   $("#monstPage").addClass("d-none");
-  $(".spinner-border").attr("style", "display: block;");
+
+  addLoad();
+
+  monstActionArray = [];
 
   let inputName = $("#name").val();
-  let inputSize = "Large"; //$("#SizeSelect").html();
+  let inputSize = $("select").find(':selected').text();
   let inputHitLow = $("#hitlow").val();
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
+
+  console.log(inputSize);
+
+  // form constrol.. we need to control or modify user input to work in our function every time
+  inputName = inputName.charAt(0).toUpperCase() + inputName.slice(1);
 
   callTheMonsters(
     inputSize,
