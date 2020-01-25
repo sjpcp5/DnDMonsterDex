@@ -65,7 +65,7 @@ $("#display-results").on("click", function() {
   $(".spinner-border").attr("style", "display: block;");
 
   let inputName = $("#name").val();
-  let inputSize = $("#SizeSelect").html();
+  let inputSize = "Large" //$("#SizeSelect").html();
   let inputHitLow = $("#hitlow").val();
   let inputHitHigh = $("#hithigh").val();
   let inputArmorMin = $("#armormin").val();
