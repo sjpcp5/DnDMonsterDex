@@ -13,7 +13,7 @@ function callTheMonsters(
 ) {
   // ajax call to get entire monster list
   $.ajax({
-    url: "http://www.dnd5eapi.co/api/monsters",
+    url: "https://www.dnd5eapi.co/api/monsters",
     method: "GET"
   }).then(function(response) {
     console.log(response);
@@ -23,7 +23,7 @@ function callTheMonsters(
       // nested ajax call to get more info about each individual monster
 
       $.ajax({
-        url: "http://www.dnd5eapi.co/api/monsters/" + resultsBig[i].index,
+        url: "https://www.dnd5eapi.co/api/monsters/" + resultsBig[i].index,
         method: "GET"
       }).done(function(response2) {
         let resultsSmall = response2;
@@ -134,7 +134,7 @@ $(document).on("click", ".click_this", function() {
   $("#monstPage").removeClass("dn");
 
   $.ajax({
-    url: "http://www.dnd5eapi.co/api/monsters/" + monster,
+    url: "https://www.dnd5eapi.co/api/monsters/" + monster,
     method: "GET"
   }).done(function(response3) {
     console.log(response3);
