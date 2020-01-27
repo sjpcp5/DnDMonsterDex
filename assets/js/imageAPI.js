@@ -8,12 +8,6 @@
 // need to append images to html per # monsters to return from search
 // add add event listener click, to select image for chosen monster
 // need to append image of selected monster
-// link to API documentation https://serpapi.com/images-results
-// serpapi image API https://serpapi.com/playground?q=Apple&tbm=isch&ijn=0
-/* API parameters tbm=isch "parameter must be set to isch", 
- jin "optional defines the page number to get, must be integer greater than or equal to 0", 
- and chips, num "parameter is number of search items returned.""
-*/
 //var DnDseResults = $(".display-data")
 //var monsterInputEL = document.getElementsByClassName(".monsterInput")
 
@@ -32,6 +26,10 @@
 // };
 var counter = 0
 $(".SearchButton").on("click", function() {
+
+// removes <img> from last search
+$("#div").empty();
+$("#giphy").remove();
 
 // variable parameter to return 1 image or gif 
 var Limitsearch = '1';
@@ -59,9 +57,10 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=7
       
 
         var results = response.data;
+        console.log(results);
         // ========================
-
-         for (var i = 0; i <= results.length; i++) {
+        
+         for (var i = 0; i < results.length; i++) {
 
         // Step 3: uncomment the for loop above and the closing curly bracket below.
         // Make a div with jQuery and store it in a variable named animalDiv.
@@ -78,23 +77,26 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=7
           //var rating = results[i].rating;
           //var p = $("<p>").text("Rating: " + rating);
 
-          var monsterImage = $("<img>");
-          //check images in response data!!!!!!!!
-          monsterImage.attr("src", results[i].images.fixed_height.url);
+          var monsterImage = $("<img id=giphy>");
+
+          // pulls downsized large image from JSON response data
+          monsterImage.attr("src", results[i].images.downsized_large.url);
 
           //monsterDiv.append(p);
           monsterDiv.append(monsterImage);
           
-          $(".gcse-search").append(monsterDiv);
+          $(".monsterGifs").append(monsterDiv);
+          
           counter++;
           console.log("clicked.."+ counter);
-          $(".gsce-search").remove();
+          
               
               
           };
           console.log(response);
         // ==================================
          });
+         
         });
 
 
