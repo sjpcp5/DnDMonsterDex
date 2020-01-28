@@ -41,6 +41,7 @@ console.log(searchNumber);
 
 
 var monster = $(".monsterInput").val();
+
 console.log(monster);
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&limit=" + Limitsearch + "&offset=" + searchNumber + "&rating=R&lang=en";
 
