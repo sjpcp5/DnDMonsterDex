@@ -28,7 +28,7 @@ function callTheMonsters(
       }).done(function(response2) {
         let resultsSmall = response2;
         var resultsToDisplay = [];
-        console.log(resultsSmall);
+        //console.log(resultsSmall);
 
         // these will be the if statements that will push our results into resultsToDisplay based upon the arguments
         if (

@@ -25,25 +25,26 @@
 // return randOffset;
 // };
 var counter = 0
-$(".click_this").on("click", function() {
+$(document).on("click", ".click_this", function() {
+console.log("monster has been clicked prepare image");
+monsterSearch = $(this).data("name");
+console.log(monsterSearch);
 
-// removes <img> from last search
-$("#div").empty();
-$("#giphy").remove();
-
-// variable parameter to return 1 image or gif 
-var Limitsearch = '1';
-// array to randomize offset
-var offsetArray = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"];
-var randomNumber= Math.floor(Math.random() * 24);
-var searchNumber= offsetArray[randomNumber];
-console.log(searchNumber);
-
-
-var monster = $(".click_this").attr("data-name");
-
+// gets the last word of the clicked monster result
+var monster = getLastWord(monsterSearch);
 console.log(monster);
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&limit=" + Limitsearch + "&offset=" + searchNumber + "&rating=R&lang=en";
+// removes <img> of last clicked monster
+ $("#giphy").empty();
+// $("#monsterGif").remove();
+
+// giphy parameter to return 1 image or gif 
+var Limitsearch = '1';
+// array to randomize offset parameter in giphy API
+var searchNumber = GetOffset();
+
+
+//console.log(monster);
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&limit=" + Limitsearch + "&offset=" + searchNumber + "&lang=en";
 
 // https://api.giphy.com/v1/gifs/search?api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&q=
 // dragon&limit=1&offset=0&rating=R&lang=en
@@ -54,54 +55,64 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=7
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        
-      
-
         var results = response.data;
         console.log(results);
         // ========================
         
          for (var i = 0; i < results.length; i++) {
-
-        // Step 3: uncomment the for loop above and the closing curly bracket below.
-        // Make a div with jQuery and store it in a variable named animalDiv.
+        // Make a div with jQuery and store it in a variable named monsterDiv.
         // Make a paragraph tag with jQuery and store it in a variable named p.
-        // Set the inner text of the paragraph to the rating of the image in results[i].
-        // Make an image tag with jQuery and store it in a variable named animalImage.
+        // 
+        // Make an image tag with jQuery and store it in a variable named monsterImage.
         // Set the image's src to results[i]'s fixed_height.url.
-        // Append the p variable to the animalDiv variable.
-        // Append the animalImage variable to the animalDiv variable.
-        // Prepend the animalDiv variable to the element with an id of gifs-appear-here.
+        // Append the p variable to the monsterDiv variable.
+        // Append the monsterImage variable to the monsterDiv variable.
+        // Prepend the monsterDiv variable to the element with an class of monsterGifs.
 
-        // ============= put step 3 in between these dashes ======================
-          var monsterDiv = $("<div>");
+          //var monsterDiv = $("<div id=monsterGif>");
           //var rating = results[i].rating;
           //var p = $("<p>").text("Rating: " + rating);
 
-          var monsterImage = $("<.giphy>");
+          //var monsterImage = $("<img id=giphy db w-100 br2 br--top>");
 
           // pulls downsized large image from JSON response data
-          monsterImage.attr("src", results[i].images.downsized_large.url);
+         var monsterImage =$("img").attr("src", results[i].images.downsized_large.url);
 
           //monsterDiv.append(p);
-          monsterDiv.append(monsterImage);
+         // monsterDiv.append(monsterImage);
           
-          $(".monsterGifs").append(monsterDiv);
-          
+          $(".giphy").append(monsterImage);
           counter++;
-          console.log("clicked.."+ counter);
-          
-              
-              
+          console.log("clicked.."+ counter);   
           };
           console.log(response);
         // ==================================
          });
          
-        });
+});
 
+// function gets the last word of the clicked monster
+function getLastWord(){
+  
+  var noHyphens = monsterSearch.replace(/-/g, " ",);
+  var noun = noHyphens.split(" ");
+  console.log(noun);
+  return noun[noun.length - 1]; 
+
+};
+
+//function gets the randome offset parameter to change up image results when search for the same monster
+function GetOffset() {
+  var offsetArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"];
+  var randomNumber = Math.floor(Math.random() * 24);
+  var searchNumber = offsetArray[randomNumber];
+  console.log(searchNumber);
+  return searchNumber;
+};
 
 
 
     
   
+
+
