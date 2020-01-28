@@ -1,6 +1,7 @@
 // creating an array that needs global scope
 
 let monstActionArray = [];
+let monstProfArray = [];
 
 // this is the function that will retreive monster list based upon search parameters
 
@@ -85,6 +86,7 @@ $("#display-results").on("click", function() {
   addLoad();
 
   monstActionArray.length = 0;
+  monstProfArray.length = 0;
 
   let inputName = $("#name").val();
   let inputSize = $("select")
@@ -143,6 +145,7 @@ $(document).on("click", ".click_this", function() {
     // creating an array of the actions able to be taken by monster (for later looping)
 
     monstActionArray = response3.actions;
+    monstProfArray = response3.proficiencies;
 
     // setting html elemetents to stats
 
@@ -162,13 +165,24 @@ $(document).on("click", ".click_this", function() {
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
 
+    // this line will clear out the div that holds the monster attacks
     $("#attack").html("");
+    $("#profs").html("");
 
     for (var k = 0; k < monstActionArray.length; k++) {
       let actionName = $("<h4>").text(monstActionArray[k].name);
       let actionDesc = $("<h5>").text(monstActionArray[k].desc);
       $("#attack").append(actionName);
       $("#attack").append(actionDesc);
+    }
+
+    // array is not working. displaying [object object]
+    for (var n = 0; n < monstProfArray.length; n++) {
+      let profName = $("<h5>").text(monstProfArray[n].name);
+      let profVal = $("<h5>").text(monstProfArray[n].value);
+      $("#profs").append(profName + ": " + profVal);
+      console.log(profName);
+      console.log(profVal);
     }
 
     // functionality for bookmark/save button
@@ -217,6 +231,7 @@ $("#clear-yes").on("click", function() {
   $("#armormin").val("");
 
   monstActionArray.length = 0;
+  monstProfArray.length = 0;
   modal.style.display = "none";
 });
 
