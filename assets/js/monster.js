@@ -178,29 +178,12 @@ $(document).on("click", ".click_this", function() {
 
     // array is not working. displaying [object object]
     for (var n = 0; n < monstProfArray.length; n++) {
-      let profName = $("<h5>").text(monstProfArray[n].name);
-      let profVal = $("<h5>").text(monstProfArray[n].value);
-      $("#profs").append(profName + ": " + profVal);
-      console.log(profName);
-      console.log(profVal);
+      let profName = $("<h5>").text(monstProfArray[n].name + ": " + monstProfArray[n].value);
+      // let profVal = $("<h5>").text(monstProfArray[n].value);
+      $("#profs").append(profName);
+      // $("#profs").append(profVal);
     }
 
-    // functionality for bookmark/save button
-
-    // this first click event is just saving the name of the current monster into array !! This functionality not working !!
-
-    $("#save-button").on("click", function() {
-      let savedMonsters = JSON.parse(localStorage.getItem("saved"));
-
-      if (savedMonsters === null) {
-        savedMonsters = ["fill"];
-        savedMonsters.push(response3.name);
-      } else if (savedMonsters != null) {
-        savedMonsters.push(response3.name);
-      }
-
-      localStorage.setItem("saved", JSON.stringify(savedMonsters));
-    });
   });
 });
 
