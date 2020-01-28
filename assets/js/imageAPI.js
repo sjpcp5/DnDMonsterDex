@@ -25,7 +25,7 @@
 // return randOffset;
 // };
 var counter = 0
-$(".SearchButton").on("click", function() {
+$(".click_this").on("click", function() {
 
 // removes <img> from last search
 $("#div").empty();
@@ -40,7 +40,7 @@ var searchNumber= offsetArray[randomNumber];
 console.log(searchNumber);
 
 
-var monster = $(".monsterInput").val();
+var monster = $(".click_this").attr("data-name");
 
 console.log(monster);
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&limit=" + Limitsearch + "&offset=" + searchNumber + "&rating=R&lang=en";
@@ -78,7 +78,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=7
           //var rating = results[i].rating;
           //var p = $("<p>").text("Rating: " + rating);
 
-          var monsterImage = $("<img id=giphy>");
+          var monsterImage = $("<.giphy>");
 
           // pulls downsized large image from JSON response data
           monsterImage.attr("src", results[i].images.downsized_large.url);
