@@ -27,16 +27,16 @@
     <!-- Nav bar linking to main page and favorites page -->
     <nav class="pa3 pa4-ns">
         <a class="link dim black b f6 f5-ns dib mr3" id="MR" href="index.html" title="Home">Monster Ranch</a>
-        <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="index.html" title="Home">Main Page</a>
+        <!-- <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="index.html" title="Home">Main Page</a>
         <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="favorites.html" title="favorites">Saved
-            Monsters</a>
+            Monsters</a> -->
     </nav>
 
     <!-- create input fields to search monstersz -->
-    <input placeholder="Mon Name" id="name" style='width: 150px; height: 31px'></input>
-    <input placeholder="Mon Hit Low" id="hitlow" style='width: 150px; height: 31px'></input>
-    <input placeholder="Mon Hit High" id="hithigh" style='width: 150px; height: 31px'></input>
-    <input placeholder="Mon Armor Min" id="armormin" style='width: 150px; height: 31px'></input>
+    <input placeholder="Monster Name" id="name" style='width: 150px; height: 31px'></input>
+    <input placeholder="Hit Points Low" id="hitlow" style='width: 150px; height: 31px'></input>
+    <input placeholder="Hit Points High" id="hithigh" style='width: 150px; height: 31px'></input>
+    <input placeholder="Minimum Armor" id="armormin" style='width: 150px; height: 31px'></input>
 
     <select id='SizeSelect' style='width: 150px; height: 37px' ;>
         <option value='1' id='tiny'>Tiny</option>
@@ -82,7 +82,7 @@
     <div id="monstPage" class="dn">
 
         <div class="row">
-            <article class="card center">
+            <article class="card">
                 <img src="http://placekitten.com/g/600/300" class="db w-100 br2 br--top"
                     alt="Photo of a kitten looking menacing.">
                 <div class="pa2 ph3-ns pb3-ns">
@@ -114,7 +114,7 @@
             </article>
             <!-- display monster info -->
             <section class="info col fl pa2">
-                <h3 id="size">Size: Tiny</h3>
+                <h3 id="size">Size: </h3>
                 <h3 id="type">Type: </h3>
                 <h3 id="ac">Armor Class:</h3>
                 <h3 id="align">Alignment: </h3>

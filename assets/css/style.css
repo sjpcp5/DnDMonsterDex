@@ -102,6 +102,10 @@ body{
 article {
     float: left;
     margin-left: 5%;
+    margin-bottom: 3%;
+    border-style: ridge;
+    border-color: rgb(223, 176, 57);
+    border-width: 10px;
 }
 .saveBtn {
     margin-right: 5%;
@@ -113,11 +117,13 @@ article {
 }
 
 .info{
-    padding-left: 10%;
-    float: right;
+    border:10px solid;
     font-size: 150%;
-    margin-left: 12%;
-    margin-right: 15%;
+    margin-right: 10%;
+    margin-left: 5%;
+    border-style: ridge;
+    border-color: rgb(223, 176, 57);
+    border-width: 10px;
 
 }
 #desc{
@@ -133,7 +139,7 @@ article {
 
 .card{
     background-color: transparent;
-    border: transparent;
+    /* border: transparent; */
 }
 
 .font{
