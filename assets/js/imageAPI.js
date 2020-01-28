@@ -24,6 +24,7 @@
 
 // return randOffset;
 // };
+$("#giphy").remove();
 var counter = 0
 $(document).on("click", ".click_this", function() {
 console.log("monster has been clicked prepare image");
@@ -34,7 +35,7 @@ console.log(monsterSearch);
 var monster = getLastWord(monsterSearch);
 console.log(monster);
 // removes <img> of last clicked monster
- $("#giphy").empty();
+ 
 // $("#monsterGif").remove();
 
 // giphy parameter to return 1 image or gif 
