@@ -145,7 +145,13 @@ article {
     border-color: rgb(223, 176, 57);
     border-width: 10px;
     text-align: center;
+    justify-content: center;
 }
+
+#size{
+    padding-inline-start: 0px;
+}
+
 #desc{
     margin: auto;
     text-align: center;
