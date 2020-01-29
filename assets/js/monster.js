@@ -16,7 +16,7 @@ function callTheMonsters(
   $.ajax({
     url: "https://www.dnd5eapi.co/api/monsters",
     method: "GET"
-  }).then(function(response) {
+  }).done(function(response) {
     console.log(response);
     let resultsBig = response.results;
     // for loop that restricts results after going through the array of data
@@ -57,10 +57,17 @@ function callTheMonsters(
               $(".display_data").append(newH3);
             }
           }
+        
         }
       });
+      // if (resultsToDisplay.length === 0) {
+      //   $(".display_data").empty();
+      // }
     }
   });
+  if( $('.display_data').is(':empty') ) {
+    alert("im freaking empty yall");
+  }
 }
 
 // functions to add and remove the loading functionality
@@ -122,6 +129,11 @@ $("#display-results").on("click", function() {
     inputArmorMin,
     inputName
   );
+
+  
+
+  
+
 });
 
 // ----------------------------------------------------------------------------------------------------- //
@@ -178,7 +190,7 @@ $(document).on("click", ".click_this", function() {
 
     // array is not working. displaying [object object]
     for (var n = 0; n < monstProfArray.length; n++) {
-      let profName = $("<h5>").text(monstProfArray[n].name + ": " + monstProfArray[n].value);
+      let profName = $("<ul>").text(monstProfArray[n].name + ": " + monstProfArray[n].value);
       // let profVal = $("<h5>").text(monstProfArray[n].value);
       $("#profs").append(profName);
       // $("#profs").append(profVal);
