@@ -181,6 +181,7 @@ $(document).on("click", ".click_this", function() {
       let profName = $("<ul>").text(
         monstProfArray[n].name + ": " + monstProfArray[n].value
       );
+      profName.attr("style", "padding-bottom: 15px");
       $("#profs").append(profName);
     }
   });
