@@ -1,6 +1,6 @@
 html * { 
     font-family: 'Aladin', cursive;
-
+   
 }
 
 body{
@@ -12,7 +12,13 @@ body{
 /* nav link */
 #MR {
     font-size: 400%;
-    margin-left: 40%  ;
+    text-align: center;
+   
+}
+
+.topPart{
+    text-align: center;
+
 }
 
 .border{
@@ -128,6 +134,10 @@ article {
     
 }
 
+#mon-name{
+    text-align: center;
+}
+
 .info{
     border:10px solid;
     font-size: 150%;
@@ -137,6 +147,7 @@ article {
 }
 #desc{
     margin: auto;
+    text-align: center;
 }
 
 
@@ -206,7 +217,8 @@ article {
 
 #attack {
     font-size: 200%;
-    }   
+    text-align: center;    
+}   
 
 
 .debug-grid {
