@@ -1,6 +1,7 @@
 // creating an array that needs global scope
 
 let monstActionArray = [];
+let monstProfArray = [];
 
 // this is the function that will retreive monster list based upon search parameters
 
@@ -85,6 +86,7 @@ $("#display-results").on("click", function() {
   addLoad();
 
   monstActionArray.length = 0;
+  monstProfArray.length = 0;
 
   let inputName = $("#name").val();
   let inputSize = $("select")
@@ -143,6 +145,7 @@ $(document).on("click", ".click_this", function() {
     // creating an array of the actions able to be taken by monster (for later looping)
 
     monstActionArray = response3.actions;
+    monstProfArray = response3.proficiencies;
 
     // setting html elemetents to stats
 
@@ -162,7 +165,9 @@ $(document).on("click", ".click_this", function() {
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
 
+    // this line will clear out the div that holds the monster attacks
     $("#attack").html("");
+    $("#profs").html("");
 
     for (var k = 0; k < monstActionArray.length; k++) {
       let actionName = $("<h4>").text(monstActionArray[k].name);
@@ -171,22 +176,14 @@ $(document).on("click", ".click_this", function() {
       $("#attack").append(actionDesc);
     }
 
-    // functionality for bookmark/save button
+    // array is not working. displaying [object object]
+    for (var n = 0; n < monstProfArray.length; n++) {
+      let profName = $("<h5>").text(monstProfArray[n].name + ": " + monstProfArray[n].value);
+      // let profVal = $("<h5>").text(monstProfArray[n].value);
+      $("#profs").append(profName);
+      // $("#profs").append(profVal);
+    }
 
-    // this first click event is just saving the name of the current monster into array !! This functionality not working !!
-
-    $("#save-button").on("click", function() {
-      let savedMonsters = JSON.parse(localStorage.getItem("saved"));
-
-      if (savedMonsters === null) {
-        savedMonsters = ["fill"];
-        savedMonsters.push(response3.name);
-      } else if (savedMonsters != null) {
-        savedMonsters.push(response3.name);
-      }
-
-      localStorage.setItem("saved", JSON.stringify(savedMonsters));
-    });
   });
 });
 
@@ -217,6 +214,7 @@ $("#clear-yes").on("click", function() {
   $("#armormin").val("");
 
   monstActionArray.length = 0;
+  monstProfArray.length = 0;
   modal.style.display = "none";
 });
 
