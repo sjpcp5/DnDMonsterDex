@@ -57,17 +57,11 @@ function callTheMonsters(
               $(".display_data").append(newH3);
             }
           }
-        
         }
       });
-      // if (resultsToDisplay.length === 0) {
-      //   $(".display_data").empty();
-      // }
+     
     }
   });
-  if( $('.display_data').is(':empty') ) {
-    alert("im freaking empty yall");
-  }
 }
 
 // functions to add and remove the loading functionality
