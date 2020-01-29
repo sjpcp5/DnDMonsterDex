@@ -57,17 +57,10 @@ function callTheMonsters(
               $(".display_data").append(newH3);
             }
           }
-        
         }
       });
-      // if (resultsToDisplay.length === 0) {
-      //   $(".display_data").empty();
-      // }
     }
   });
-  if( $('.display_data').is(':empty') ) {
-    alert("im freaking empty yall");
-  }
 }
 
 // functions to add and remove the loading functionality
@@ -87,6 +80,7 @@ function removeLoad() {
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
+  setTimeout(waiting, 7000);
   $("#monstPage").addClass("dn");
 
   $(".display_data").empty();
@@ -129,11 +123,6 @@ $("#display-results").on("click", function() {
     inputArmorMin,
     inputName
   );
-
-  
-
-  
-
 });
 
 // ----------------------------------------------------------------------------------------------------- //
@@ -172,7 +161,7 @@ $(document).on("click", ".click_this", function() {
     $("#size").text("Size: " + response3.size);
     $("#type").text("Type: " + response3.type);
     $("#ac").text("Armor Class: " + response3.armor_class);
-    $("#align").text("Alignment: " + response3.alignment );
+    $("#align").text("Alignment: " + response3.alignment);
     $("#hp").text("Hit Points: " + response3.hit_points);
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
@@ -188,16 +177,43 @@ $(document).on("click", ".click_this", function() {
       $("#attack").append(actionDesc);
     }
 
-    // array is not working. displaying [object object]
     for (var n = 0; n < monstProfArray.length; n++) {
-      let profName = $("<ul>").text(monstProfArray[n].name + ": " + monstProfArray[n].value);
-      // let profVal = $("<h5>").text(monstProfArray[n].value);
+      let profName = $("<ul>").text(
+        monstProfArray[n].name + ": " + monstProfArray[n].value
+      );
+      profName.attr("style", "padding-bottom: 15px");
       $("#profs").append(profName);
-      // $("#profs").append(profVal);
     }
-
   });
 });
+
+// function to display message if waiting too long
+
+function waiting() {
+  removeLoad();
+  if ($(".display_data").text() === "") {
+    let waitMessage = $("<h3>").text(
+      "It looks like we're having trouble finding you're monster. Please widen your search and try again!"
+    );
+    $(".display_data").append(waitMessage);
+  }
+}
+
+// function to reset intro html on the main page
+
+function mainReset() {
+  let h1El = $("<h1>").text("Welcome to Monster Ranch!");
+  let h2ElOne = $("<h2>").text(
+    "If you are looking for some Monster stats (5th Edition Dungeons and Dragons) and fun gifs, you have arrived at the right place!"
+  );
+  let h2ElTwo = $("<h2>").text(
+    "Please enter your search parameters above, and let us find your monsters for you!"
+  );
+
+  $(".display_data").append(h1El);
+  $(".display_data").append(h2ElOne);
+  $(".display_data").append(h2ElTwo);
+}
 
 // ---------------------------------------------------------------------------------------- //
 
@@ -224,6 +240,8 @@ $("#clear-yes").on("click", function() {
   $("#hitlow").val("");
   $("#hithigh").val("");
   $("#armormin").val("");
+
+  mainReset();
 
   monstActionArray.length = 0;
   monstProfArray.length = 0;
