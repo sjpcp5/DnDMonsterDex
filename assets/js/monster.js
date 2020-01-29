@@ -80,7 +80,6 @@ function removeLoad() {
 
 $("#display-results").on("click", function() {
   console.log("i hath been clicked");
-  setTimeout(waiting, 7000);
   $("#monstPage").addClass("dn");
 
   $(".display_data").empty();
@@ -144,6 +143,7 @@ $(document).on("click", ".click_this", function() {
   }).done(function(response3) {
     console.log(response3);
     $(".display_data").empty();
+    $(".waiting").remove();
 
     // creating an array of the actions able to be taken by monster (for later looping)
 
@@ -188,20 +188,6 @@ $(document).on("click", ".click_this", function() {
     }
   });
 });
-
-// function to display message if waiting too long
-
-function waiting() {
-  removeLoad();
-  let waitingDiv = $("<div>").addClass("waiting");
-  $(".display_data").append(waitingDiv);
-  if ($(".display_data").text() === "") {
-    let waitMessage = $("<h3>").text(
-      "It looks like we're having trouble finding you're monster. Please widen your search and try again!"
-    );
-    $(".waiting").append(waitMessage);
-  }
-}
 
 // function to reset intro html on the main page
 
@@ -249,7 +235,6 @@ $("#clear-yes").on("click", function() {
 
   $(".waiting").remove();
   mainReset();
-
 
   monstActionArray.length = 0;
   monstProfArray.length = 0;
