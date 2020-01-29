@@ -59,7 +59,6 @@ function callTheMonsters(
           }
         }
       });
-     
     }
   });
 }
@@ -123,11 +122,6 @@ $("#display-results").on("click", function() {
     inputArmorMin,
     inputName
   );
-
-  
-
-  
-
 });
 
 // ----------------------------------------------------------------------------------------------------- //
@@ -166,7 +160,7 @@ $(document).on("click", ".click_this", function() {
     $("#size").text("Size: " + response3.size);
     $("#type").text("Type: " + response3.type);
     $("#ac").text("Armor Class: " + response3.armor_class);
-    $("#align").text("Alignment: " + response3.alignment );
+    $("#align").text("Alignment: " + response3.alignment);
     $("#hp").text("Hit Points: " + response3.hit_points);
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
@@ -184,12 +178,13 @@ $(document).on("click", ".click_this", function() {
 
     // array is not working. displaying [object object]
     for (var n = 0; n < monstProfArray.length; n++) {
-      let profName = $("<ul>").text(monstProfArray[n].name + ": " + monstProfArray[n].value);
+      let profName = $("<ul>").text(
+        monstProfArray[n].name + ": " + monstProfArray[n].value
+      );
       // let profVal = $("<h5>").text(monstProfArray[n].value);
       $("#profs").append(profName);
       // $("#profs").append(profVal);
     }
-
   });
 });
 
