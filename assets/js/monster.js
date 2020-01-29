@@ -84,6 +84,7 @@ $("#display-results").on("click", function() {
   $("#monstPage").addClass("dn");
 
   $(".display_data").empty();
+  $(".waiting").empty();
   addLoad();
 
   monstActionArray.length = 0;
@@ -133,6 +134,7 @@ $(document).on("click", ".click_this", function() {
   console.log("I am clicked");
   let monster = $(this).data("name");
   console.log(monster);
+  $(".display_data").text(" ");
 
   $("#monstPage").removeClass("dn");
 
@@ -195,7 +197,7 @@ function waiting() {
     let waitMessage = $("<h3>").text(
       "It looks like we're having trouble finding you're monster. Please widen your search and try again!"
     );
-    $(".display_data").append(waitMessage);
+    $(".waiting").append(waitMessage);
   }
 }
 
@@ -213,6 +215,8 @@ function mainReset() {
   $(".display_data").append(h1El);
   $(".display_data").append(h2ElOne);
   $(".display_data").append(h2ElTwo);
+
+  $(".waiting").empty();
 }
 
 // ---------------------------------------------------------------------------------------- //
@@ -241,7 +245,9 @@ $("#clear-yes").on("click", function() {
   $("#hithigh").val("");
   $("#armormin").val("");
 
+  $(".waiting").empty();
   mainReset();
+
 
   monstActionArray.length = 0;
   monstProfArray.length = 0;
