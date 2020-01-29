@@ -84,7 +84,7 @@ $("#display-results").on("click", function() {
   $("#monstPage").addClass("dn");
 
   $(".display_data").empty();
-  $(".waiting").empty();
+  $(".waiting").remove();
   addLoad();
 
   monstActionArray.length = 0;
@@ -193,6 +193,8 @@ $(document).on("click", ".click_this", function() {
 
 function waiting() {
   removeLoad();
+  let waitingDiv = $("<div>").addClass("waiting");
+  $(".display_data").append(waitingDiv);
   if ($(".display_data").text() === "") {
     let waitMessage = $("<h3>").text(
       "It looks like we're having trouble finding you're monster. Please widen your search and try again!"
@@ -216,7 +218,7 @@ function mainReset() {
   $(".display_data").append(h2ElOne);
   $(".display_data").append(h2ElTwo);
 
-  $(".waiting").empty();
+  $(".waiting").remove();
 }
 
 // ---------------------------------------------------------------------------------------- //
@@ -245,7 +247,7 @@ $("#clear-yes").on("click", function() {
   $("#hithigh").val("");
   $("#armormin").val("");
 
-  $(".waiting").empty();
+  $(".waiting").remove();
   mainReset();
 
 
