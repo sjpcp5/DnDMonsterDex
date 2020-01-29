@@ -166,12 +166,20 @@ article {
     font-size: 130%;
 }
 .stats{
-    font-size: 130%
+    font-size: 130%;
 
 }
 
 .display_data{
     font-size: 150%;
+}
+
+.click_this:hover {
+    opacity: .8;
+    color: rgba(182, 8, 8, 0.952);
+    text-decoration: underline;
+    transition: color .15s ease-in;
+    /*outline:1px dotted currentColor;*/
 }
 
 
