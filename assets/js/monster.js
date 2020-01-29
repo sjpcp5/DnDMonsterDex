@@ -1,6 +1,7 @@
 // creating an array that needs global scope
 
 let monstActionArray = [];
+let monstProfArray = [];
 
 // this is the function that will retreive monster list based upon search parameters
 
@@ -15,7 +16,7 @@ function callTheMonsters(
   $.ajax({
     url: "https://www.dnd5eapi.co/api/monsters",
     method: "GET"
-  }).then(function(response) {
+  }).done(function(response) {
     console.log(response);
     let resultsBig = response.results;
     // for loop that restricts results after going through the array of data
@@ -28,7 +29,7 @@ function callTheMonsters(
       }).done(function(response2) {
         let resultsSmall = response2;
         var resultsToDisplay = [];
-        //console.log(resultsSmall);
+        console.log(resultsSmall);
 
         // these will be the if statements that will push our results into resultsToDisplay based upon the arguments
         if (
@@ -39,6 +40,7 @@ function callTheMonsters(
         ) {
           resultsToDisplay.push(resultsSmall.name);
         }
+
         // This loop actually writes the results to the html file dynamically
         for (var j = 0; j < resultsToDisplay.length; j++) {
           if (monName === "undefined") {
@@ -82,9 +84,11 @@ $("#display-results").on("click", function() {
   $("#monstPage").addClass("dn");
 
   $(".display_data").empty();
+  $(".waiting").remove();
   addLoad();
 
   monstActionArray.length = 0;
+  monstProfArray.length = 0;
 
   let inputName = $("#name").val();
   let inputSize = $("select")
@@ -130,6 +134,7 @@ $(document).on("click", ".click_this", function() {
   console.log("I am clicked");
   let monster = $(this).data("name");
   console.log(monster);
+  $(".display_data").text(" ");
 
   $("#monstPage").removeClass("dn");
 
@@ -139,10 +144,12 @@ $(document).on("click", ".click_this", function() {
   }).done(function(response3) {
     console.log(response3);
     $(".display_data").empty();
+    $(".waiting").remove();
 
     // creating an array of the actions able to be taken by monster (for later looping)
 
     monstActionArray = response3.actions;
+    monstProfArray = response3.proficiencies;
 
     // setting html elemetents to stats
 
@@ -162,7 +169,9 @@ $(document).on("click", ".click_this", function() {
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
 
+    // this line will clear out the div that holds the monster attacks
     $("#attack").html("");
+    $("#profs").html("");
 
     for (var k = 0; k < monstActionArray.length; k++) {
       let actionName = $("<h4>").text(monstActionArray[k].name);
@@ -171,24 +180,33 @@ $(document).on("click", ".click_this", function() {
       $("#attack").append(actionDesc);
     }
 
-    // functionality for bookmark/save button
-
-    // this first click event is just saving the name of the current monster into array !! This functionality not working !!
-
-    $("#save-button").on("click", function() {
-      let savedMonsters = JSON.parse(localStorage.getItem("saved"));
-
-      if (savedMonsters === null) {
-        savedMonsters = ["fill"];
-        savedMonsters.push(response3.name);
-      } else if (savedMonsters != null) {
-        savedMonsters.push(response3.name);
-      }
-
-      localStorage.setItem("saved", JSON.stringify(savedMonsters));
-    });
+    for (var n = 0; n < monstProfArray.length; n++) {
+      let profName = $("<ul>").text(
+        monstProfArray[n].name + ": " + monstProfArray[n].value
+      );
+      profName.attr("style", "padding-bottom: 15px");
+      $("#profs").append(profName);
+    }
   });
 });
+
+// function to reset intro html on the main page
+
+function mainReset() {
+  let h1El = $("<h1>").text("Welcome to Monster Ranch!");
+  let h2ElOne = $("<h2>").text(
+    "If you are looking for some Monster stats (5th Edition Dungeons and Dragons) and fun gifs, you have arrived at the right place!"
+  );
+  let h2ElTwo = $("<h2>").text(
+    "Please enter your search parameters above, and let us find your monsters for you!"
+  );
+
+  $(".display_data").append(h1El);
+  $(".display_data").append(h2ElOne);
+  $(".display_data").append(h2ElTwo);
+
+  $(".waiting").remove();
+}
 
 // ---------------------------------------------------------------------------------------- //
 
@@ -216,7 +234,11 @@ $("#clear-yes").on("click", function() {
   $("#hithigh").val("");
   $("#armormin").val("");
 
+  $(".waiting").remove();
+  mainReset();
+
   monstActionArray.length = 0;
+  monstProfArray.length = 0;
   modal.style.display = "none";
 });
 

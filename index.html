@@ -24,14 +24,15 @@
 </head>
 
 <body>
+    <div class="topPart">
     <!-- Nav bar linking to main page and favorites page -->
     <nav class="pa3 pa4-ns">
-        <a class="link dim black b f6 f5-ns dib mr3" id="MR" href="index.html" title="Home">Monster Ranch</a>
+        <a class="link dim black" id="MR" href="index.html" title="Home">Monster Ranch</a>
         <!-- <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="index.html" title="Home">Main Page</a>
         <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="favorites.html" title="favorites">Saved
             Monsters</a> -->
     </nav>
-
+   
     <!-- create input fields to search monstersz -->
     <input placeholder="Monster Name" id="name" style='width: 150px; height: 31px'></input>
     <input placeholder="Hit Points Low" id="hitlow" style='width: 150px; height: 31px'></input>
@@ -51,11 +52,15 @@
     <!-- Trigger/Open The Modal -->
     <button id="myBtn">Clear</button>
 
+    <div class="border"></div>
 
     <div class="display_data">
-
+        <h1>Welcome to Monster Ranch!</h1>
+        <h2>If you are looking for some Monster stats (5th Edition Dungeons and Dragons) and fun gifs, you have arrived at the right place!</h2>
+        <h2>Please enter your search parameters above, and let us find your monsters for you!</h2>
     </div>
-
+    
+</div>
     <!-- Start of Monster Page -->
 
     <!--Modal Code------------------>
@@ -82,8 +87,8 @@
     <div id="monstPage" class="dn">
 
         <div class="row">
-            <article class="card">
-                <img src="http://placekitten.com/g/600/300" class="giphy" style="db w-100 br2 br--top" id=monsterGif
+            <article class="card" style="width:600px;height:900px">
+                <img src="./assets/images/wizardcat.jpg" class="giphy" style="width:600px;height:500px;"
                     alt="Photo of a kitten looking menacing.">
                 <div class="pa2 ph3-ns pb3-ns">
                     <div class="dt w-100 mt1">
@@ -95,17 +100,19 @@
                     </div>
 
                     <div class='stats'>
-                        <div class="stat1 flex">
+                        <div class="stat1 fl w-50 pa2">
                             <ul id="str"> Str = 5 </ul>
                             <ul id="dex"> Dex = 5 </ul>
                             <ul id="int"> Int = 5 </ul>
-                        </div>
-
-                        <div class="stat2 flex">
                             <ul id="cha"> Cha = 5 </ul>
                             <ul id="wis"> Wis = 5 </ul>
                             <ul id="con"> Con = 5 </ul>
                         </div>
+
+                        <div class="stat2 fl w-50 pa2">
+                            <ul id="profs" class="db"></ul>
+                        </div>
+                       
                     </div>
 
                 </div>
@@ -113,18 +120,15 @@
                 </p>
             </article>
             <!-- display monster info -->
-            <section class="info col fl pa2">
-                <h3 id="size">Size: </h3>
-                <h3 id="type">Type: </h3>
-                <h3 id="ac">Armor Class:</h3>
-                <h3 id="align">Alignment: </h3>
-                <h3 id="hp">Hit Points:</h3>
-                <h3 id="dice">Hit Dice</h3>
-                <h3 id="lang">Languages: </h3>
-                <div id="actions">
-                    <h3 id="throws">Saving throws:</h3>
-                    <h3 id="immun">Immunities:</h3>
-            </section>
+            <div class="info dt flex">
+                    <ul id="size">Size: </ul>
+                    <ul id="type">Type: </ul>
+                    <ul id="ac">Armor Class:</ul>
+                    <ul id="align">Alignment: </ul>
+                    <ul id="hp">Hit Points:</ul>
+                    <ul id="dice">Hit Dice</ul>
+                    <ul id="lang">Languages: </ul>
+            </div>       
         </div>
         <br>
 
