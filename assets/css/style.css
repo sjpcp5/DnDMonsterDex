@@ -100,8 +100,8 @@ body{
 }
 
 article {
-    float: left;
-    margin-left: 5%;
+    
+    margin: auto;
     margin-bottom: 3%;
     border-style: ridge;
     border-color: rgb(223, 176, 57);
@@ -119,15 +119,12 @@ article {
 .info{
     border:10px solid;
     font-size: 150%;
-    margin-right: 10%;
-    margin-left: 5%;
     border-style: ridge;
     border-color: rgb(223, 176, 57);
-    border-width: 10px;
-
+    border-width: 10px;;
 }
 #desc{
-    float: left;;
+    margin: auto;
 }
 
 

@@ -172,7 +172,7 @@ $(document).on("click", ".click_this", function() {
     $("#size").text("Size: " + response3.size);
     $("#type").text("Type: " + response3.type);
     $("#ac").text("Armor Class: " + response3.armor_class);
-    $("#align").text("Alignment: " + response3.alignment);
+    $("#align").text("Alignment: " + response3.alignment );
     $("#hp").text("Hit Points: " + response3.hit_points);
     $("#dice").text("Hit Dice: " + response3.hit_dice);
     $("#lang").text("Languages: " + response3.languages);
