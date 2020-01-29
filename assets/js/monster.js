@@ -40,6 +40,7 @@ function callTheMonsters(
         ) {
           resultsToDisplay.push(resultsSmall.name);
         }
+
         // This loop actually writes the results to the html file dynamically
         for (var j = 0; j < resultsToDisplay.length; j++) {
           if (monName === "undefined") {
