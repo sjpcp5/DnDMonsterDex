@@ -6,11 +6,23 @@ html * {
 body{
     background-image: url("../images/scrollbackground.jpg");
     margin-left: 3%;
+    margin-right: 3%;
 }
 
 /* nav link */
 #MR {
     font-size: 400%;
+    margin-left: 40%  ;
+}
+
+.border{
+    margin-top: 0.5%;
+    border-bottom-style: ridge;
+    border-color: rgb(223, 176, 57);
+    border-width: 10px;
+    margin-left: -3%;
+    margin-right: -3%;
+
 }
 
 .dib {
@@ -121,7 +133,7 @@ article {
     font-size: 150%;
     border-style: ridge;
     border-color: rgb(223, 176, 57);
-    border-width: 10px;;
+    border-width: 10px;
 }
 #desc{
     margin: auto;
