@@ -144,6 +144,7 @@ article {
     border-style: ridge;
     border-color: rgb(223, 176, 57);
     border-width: 10px;
+    text-align: center;
 }
 #desc{
     margin: auto;
