@@ -31,7 +31,6 @@
         <a class="link dim gray    f6 f5-ns dib mr3" class="nav" href="favorites.html" title="favorites">Saved
             Monsters</a> -->
     </nav>
-
     <!-- create input fields to search monstersz -->
     <input placeholder="Monster Name" id="name" style='width: 150px; height: 31px'></input>
     <input placeholder="Hit Points Low" id="hitlow" style='width: 150px; height: 31px'></input>
@@ -50,7 +49,6 @@
     <button id="display-results">Search</button>
     <!-- Trigger/Open The Modal -->
     <button id="myBtn">Clear</button>
-
 
     <div class="display_data">
 
@@ -82,7 +80,7 @@
     <div id="monstPage" class="dn">
 
         <div class="row">
-            <article class="card" style="width:600px;">
+            <article class="card" style="width:600px;height:900px">
                 <img src="http://placekitten.com/g/600/300" class="giphy" style="width:600px;height:500px;"
                     alt="Photo of a kitten looking menacing.">
                 <div class="pa2 ph3-ns pb3-ns">
@@ -95,17 +93,19 @@
                     </div>
 
                     <div class='stats'>
-                        <div class="stat1 flex">
+                        <div class="stat1 fl w-50 pa2">
                             <ul id="str"> Str = 5 </ul>
                             <ul id="dex"> Dex = 5 </ul>
                             <ul id="int"> Int = 5 </ul>
-                        </div>
-
-                        <div class="stat2 flex">
                             <ul id="cha"> Cha = 5 </ul>
                             <ul id="wis"> Wis = 5 </ul>
                             <ul id="con"> Con = 5 </ul>
                         </div>
+
+                        <div class="stat2 fl w-50 pa2">
+                            <ul id="profs" class="db"></ul>
+                        </div>
+                       
                     </div>
 
                 </div>
@@ -113,19 +113,15 @@
                 </p>
             </article>
             <!-- display monster info -->
-            <div class="info pa2 dt flex">
+            <div class="info dt flex">
                     <ul id="size">Size: </ul>
                     <ul id="type">Type: </ul>
                     <ul id="ac">Armor Class:</ul>
                     <ul id="align">Alignment: </ul>
-              
-                
                     <ul id="hp">Hit Points:</ul>
                     <ul id="dice">Hit Dice</ul>
                     <ul id="lang">Languages: </ul>
-                    <ul id="profs"></ul>
-               
-            </div>
+            </div>       
         </div>
         <br>
 
