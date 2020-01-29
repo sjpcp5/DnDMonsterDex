@@ -24,7 +24,7 @@
 
 // return randOffset;
 // };
-$("#giphy").remove();
+
 var counter = 0
 $(document).on("click", ".click_this", function() {
 console.log("monster has been clicked prepare image");
@@ -56,8 +56,9 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=7
         url: queryURL,
         method: "GET"
     }).then(function(response) {
+      
         var results = response.data;
-        console.log(results);
+        
         // ========================
         
          for (var i = 0; i < results.length; i++) {
@@ -74,15 +75,19 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=7
           //var rating = results[i].rating;
           //var p = $("<p>").text("Rating: " + rating);
 
-          //var monsterImage = $("<img id=giphy db w-100 br2 br--top>");
+          //var monsterImage = $("<img class=giphy style=db w-100 br2 br--top>");
 
           // pulls downsized large image from JSON response data
          var monsterImage =$("img").attr("src", results[i].images.downsized_large.url);
 
           //monsterDiv.append(p);
-         // monsterDiv.append(monsterImage);
-          
+         //monsterDiv.append(monsterImage);
+         if (results[i].data === [0]) {
+                  resultEmpty();
+         } else {
+          $(".giphy").empty(monsterImage);
           $(".giphy").append(monsterImage);
+         };
           counter++;
           console.log("clicked.."+ counter);   
           };
@@ -91,6 +96,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=7
          });
          
 });
+
 
 // function gets the last word of the clicked monster
 function getLastWord(){
@@ -112,8 +118,14 @@ function GetOffset() {
 };
 
 
-
-    
+function resultEmpty(){
+  $(".giphy").remove(monsterImage);
+};
+//if statement if results do not match name of image do not append
+// need a function that nullifies append of image or do nothing
+// condition variable 
+// compare function of JSON data and monster variable 
+//if monster does not match results don't append img else append img
   
 
 
