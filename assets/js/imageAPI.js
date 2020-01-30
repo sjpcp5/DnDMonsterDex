@@ -26,85 +26,85 @@
 // };
 
 var counter = 0
-$(document).on("click", ".click_this", function() {
-console.log("monster has been clicked prepare image");
-monsterSearch = $(this).data("name");
-console.log(monsterSearch);
+$(document).on("click", ".click_this", function () {
+  console.log("monster has been clicked prepare image");
+  monsterSearch = $(this).data("name");
+  console.log(monsterSearch);
 
-// gets the last word of the clicked monster result
-var monster = getLastWord(monsterSearch);
-console.log(monster);
-// removes <img> of last clicked monster
- 
-// $("#monsterGif").remove();
+  // gets the last word of the clicked monster result
+  var monster = getLastWord(monsterSearch);
+  console.log(monster);
+  // removes <img> of last clicked monster
 
-// giphy parameter to return 1 image or gif 
-var Limitsearch = '1';
-// array to randomize offset parameter in giphy API
-var searchNumber = GetOffset();
+  // $("#monsterGif").remove();
 
-
-//console.log(monster);
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&limit=" + Limitsearch + "&offset=" + searchNumber + "&lang=en";
-
-// https://api.giphy.com/v1/gifs/search?api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&q=
-// dragon&limit=1&offset=0&rating=R&lang=en
-// var queryURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:&006501763354055401202:easggwesejq=ancientblackdragon";
+  // giphy parameter to return 1 image or gif 
+  var Limitsearch = '1';
+  // array to randomize offset parameter in giphy API
+  var searchNumber = GetOffset();
 
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
-      
-        var results = response.data;
-        
-        // ========================
-        
-         for (var i = 0; i < results.length; i++) {
-        // Make a div with jQuery and store it in a variable named monsterDiv.
-        // Make a paragraph tag with jQuery and store it in a variable named p.
-        // 
-        // Make an image tag with jQuery and store it in a variable named monsterImage.
-        // Set the image's src to results[i]'s fixed_height.url.
-        // Append the p variable to the monsterDiv variable.
-        // Append the monsterImage variable to the monsterDiv variable.
-        // Prepend the monsterDiv variable to the element with an class of monsterGifs.
+  //console.log(monster);
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + monster + "&api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&limit=" + Limitsearch + "&offset=" + searchNumber + "&lang=en";
 
-          //var monsterDiv = $("<div id=monsterGif>");
-          //var rating = results[i].rating;
-          //var p = $("<p>").text("Rating: " + rating);
+  // https://api.giphy.com/v1/gifs/search?api_key=71957ReGgM9ed9MEpRgc0IVcliXGpSPq&q=
+  // dragon&limit=1&offset=0&rating=R&lang=en
+  // var queryURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe4vzXonU1ftH9aSvHEjdZtGCwAa2epiA:&006501763354055401202:easggwesejq=ancientblackdragon";
 
-          //var monsterImage = $("<img class=giphy style=db w-100 br2 br--top>");
 
-          // pulls downsized large image from JSON response data
-         var monsterImage =$("img").attr("src", results[i].images.downsized_large.url);
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
 
-          //monsterDiv.append(p);
-         //monsterDiv.append(monsterImage);
-         if (results[i].data === [0]) {
-                  resultEmpty();
-         } else {
-          $(".giphy").empty(monsterImage);
-          $(".giphy").append(monsterImage);
-         };
-          counter++;
-          console.log("clicked.."+ counter);   
-          };
-          console.log(response);
-        // ==================================
-         });
-         
+    var results = response.data;
+
+    // ========================
+
+    for (var i = 0; i < results.length; i++) {
+      // Make a div with jQuery and store it in a variable named monsterDiv.
+      // Make a paragraph tag with jQuery and store it in a variable named p.
+      // 
+      // Make an image tag with jQuery and store it in a variable named monsterImage.
+      // Set the image's src to results[i]'s fixed_height.url.
+      // Append the p variable to the monsterDiv variable.
+      // Append the monsterImage variable to the monsterDiv variable.
+      // Prepend the monsterDiv variable to the element with an class of monsterGifs.
+
+      //var monsterDiv = $("<div id=monsterGif>");
+      //var rating = results[i].rating;
+      //var p = $("<p>").text("Rating: " + rating);
+
+      //var monsterImage = $("<img class=giphy style=db w-100 br2 br--top>");
+
+      // pulls downsized large image from JSON response data
+      var monsterImage = $("img").attr("src", results[i].images.downsized_large.url);
+
+      //monsterDiv.append(p);
+      //monsterDiv.append(monsterImage);
+      if (results[i].data === [0]) {
+        resultEmpty();
+      } else {
+        $(".giphy").empty(monsterImage);
+        $(".giphy").append(monsterImage);
+      };
+      counter++;
+      console.log("clicked.." + counter);
+    };
+    console.log(response);
+    // ==================================
+  });
+
 });
 
 
 // function gets the last word of the clicked monster
-function getLastWord(){
-  
-  var noHyphens = monsterSearch.replace(/-/g, " ",);
+function getLastWord() {
+
+  var noHyphens = monsterSearch.replace(/-/g, " ");
   var noun = noHyphens.split(" ");
   console.log(noun);
-  return noun[noun.length - 1]; 
+  return noun[noun.length - 1];
 
 };
 
@@ -118,7 +118,7 @@ function GetOffset() {
 };
 
 
-function resultEmpty(){
+function resultEmpty() {
   $(".giphy").remove(monsterImage);
 };
 //if statement if results do not match name of image do not append
@@ -126,6 +126,6 @@ function resultEmpty(){
 // condition variable 
 // compare function of JSON data and monster variable 
 //if monster does not match results don't append img else append img
-  
+
 
 
