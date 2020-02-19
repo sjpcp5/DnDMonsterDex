@@ -1,4 +1,4 @@
-# Project1
+# Dungeons and Dragons Monster Index and Glossary
 Application that is the Minimal Viable Project using Dungeons and Dragons API to create a search through D&D's monster manual complimented with images from an image API.
 
 ## Project requirements
@@ -11,4 +11,4 @@ Application that is the Minimal Viable Project using Dungeons and Dragons API to
 As a player I want to look up monsters and their stats so I that can plan my Dungeons and Dragons session.
 
 ## Link to Our Page
-https://sjpcp5.github.io/project1/
+https://sjpcp5.github.io/DnDMonsterDex
