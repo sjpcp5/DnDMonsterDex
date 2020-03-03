@@ -2,7 +2,7 @@
 Application that is the Minimal Viable Project using Dungeons and Dragons API to create a search through D&D's monster manual complimented with images from an image API.
 
 ## Project requirements
-* use 1 new libraries, like the css libraries tachyon, bootstrap, etc..
+* Use 1 new library, like the css libraries tachyon, bootstrap, etc..
 * 1 new JavaScript library, maybe Drag n Drop JavaScript library
 * 2 APIs: D&D API and google image search API
 * polished UI
